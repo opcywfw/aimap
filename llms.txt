@@ -1,0 +1,9 @@
+# 星图 AI 导航
+
+> 精选实用 AI 工具与模型 API 服务的中文导航。
+
+- [完整工具目录](https://ai.opcmap.com/index.md): 按分类整理的工具、简介与官网链接
+- [工具数据](https://ai.opcmap.com/api/tools.json): 公开只读 JSON 目录
+- [API 说明](https://ai.opcmap.com/openapi.json): OpenAPI 3.1 文档
+- [Agent Skill](https://ai.opcmap.com/.well-known/agent-skills/discover-ai-tools/SKILL.md): Agent 使用说明
+- [APINEBULA](https://apinebula.ai/t1QTfq): AI API 聚合平台

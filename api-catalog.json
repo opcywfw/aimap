@@ -1,0 +1,10 @@
+{
+  "name": "星图 AI 导航 API Catalog",
+  "description": "Public read-only catalog APIs.",
+  "apis": [
+    {
+      "name": "AI tools catalog",
+      "openapi": "https://ai.opcmap.com/openapi.json"
+    }
+  ]
+}

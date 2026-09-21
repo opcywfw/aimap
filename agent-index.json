@@ -1,0 +1,12 @@
+{
+  "name": "星图 AI 导航 Agent Index",
+  "description": "Read-only discovery endpoints for the curated AI directory.",
+  "agents": [
+    {
+      "name": "xingtu-ai-directory",
+      "protocol": "mcp",
+      "endpoint": "https://ai.opcmap.com/mcp",
+      "card": "https://ai.opcmap.com/.well-known/mcp/server-card.json"
+    }
+  ]
+}

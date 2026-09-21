@@ -1,0 +1,1116 @@
+{
+  "count": 87,
+  "items": [
+    {
+      "name": "ChatGPT",
+      "short": "GPT",
+      "category": "chat",
+      "desc": "通用型 AI 助手，适合写作、分析、图像、学习与复杂任务。",
+      "url": "https://chatgpt.com/",
+      "tags": [
+        "通用",
+        "多模态",
+        "免费"
+      ],
+      "badge": "热门"
+    },
+    {
+      "name": "Claude",
+      "short": "CL",
+      "category": "chat",
+      "desc": "擅长长文本、严谨写作、推理与代码协作的 AI 助手。",
+      "url": "https://claude.ai/",
+      "tags": [
+        "长文本",
+        "写作",
+        "免费"
+      ],
+      "badge": "编辑精选"
+    },
+    {
+      "name": "Gemini",
+      "short": "GE",
+      "category": "chat",
+      "desc": "Google 多模态助手，可联动搜索、文档与 Workspace。",
+      "url": "https://gemini.google.com/",
+      "tags": [
+        "Google",
+        "多模态",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "DeepSeek",
+      "short": "DS",
+      "category": "chat",
+      "desc": "国产推理与代码模型助手，中文表现突出。",
+      "url": "https://chat.deepseek.com/",
+      "tags": [
+        "国产",
+        "推理",
+        "免费"
+      ],
+      "badge": "热门"
+    },
+    {
+      "name": "Kimi",
+      "short": "KM",
+      "category": "chat",
+      "desc": "擅长长文档、搜索和中文办公场景的智能助手。",
+      "url": "https://www.kimi.com/",
+      "tags": [
+        "国产",
+        "长文本",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "通义千问",
+      "short": "QW",
+      "category": "chat",
+      "desc": "阿里旗下 AI 助手，覆盖对话、创作、视觉与办公。",
+      "url": "https://www.qianwen.com/",
+      "tags": [
+        "国产",
+        "多模态",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "豆包",
+      "short": "DB",
+      "category": "chat",
+      "desc": "字节跳动旗下大众化 AI 助手，支持对话、创作与语音。",
+      "url": "https://www.doubao.com/",
+      "tags": [
+        "国产",
+        "语音",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "腾讯元宝",
+      "short": "YB",
+      "category": "chat",
+      "desc": "腾讯旗下 AI 助手，适合微信生态、文档与深度搜索。",
+      "url": "https://yuanbao.tencent.com/",
+      "tags": [
+        "国产",
+        "搜索",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Grok",
+      "short": "GK",
+      "category": "chat",
+      "desc": "xAI 的实时信息与推理助手，连接 X 平台内容。",
+      "url": "https://grok.com/",
+      "tags": [
+        "实时",
+        "推理",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Le Chat",
+      "short": "MI",
+      "category": "chat",
+      "desc": "Mistral AI 的多语言助手，强调速度与企业可控性。",
+      "url": "https://chat.mistral.ai/",
+      "tags": [
+        "多语言",
+        "快速",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Poe",
+      "short": "PO",
+      "category": "chat",
+      "desc": "在同一界面使用多家模型与社区机器人。",
+      "url": "https://poe.com/",
+      "tags": [
+        "多模型",
+        "机器人",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "智谱清言",
+      "short": "ZP",
+      "category": "chat",
+      "desc": "智谱 AI 推出的中文大模型助手与智能体入口。",
+      "url": "https://chatglm.cn/",
+      "tags": [
+        "国产",
+        "智能体",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Perplexity",
+      "short": "PX",
+      "category": "search",
+      "desc": "带来源引用的 AI 搜索与深度研究工具。",
+      "url": "https://www.perplexity.ai/",
+      "tags": [
+        "搜索",
+        "引用",
+        "免费"
+      ],
+      "badge": "热门"
+    },
+    {
+      "name": "Genspark",
+      "short": "GS",
+      "category": "search",
+      "desc": "用 AI 智能体完成搜索、整理与交付型任务。",
+      "url": "https://www.genspark.ai/",
+      "tags": [
+        "智能体",
+        "研究",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Felo",
+      "short": "FE",
+      "category": "search",
+      "desc": "支持多语言检索、知识图谱与演示生成的 AI 搜索。",
+      "url": "https://felo.ai/",
+      "tags": [
+        "多语言",
+        "演示",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "秘塔 AI 搜索",
+      "short": "MT",
+      "category": "search",
+      "desc": "中文无广告 AI 搜索，支持研究模式与来源追踪。",
+      "url": "https://metaso.cn/",
+      "tags": [
+        "国产",
+        "搜索",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Devv",
+      "short": "DV",
+      "category": "search",
+      "desc": "面向开发者的 AI 搜索引擎，聚焦技术问题。",
+      "url": "https://devv.ai/",
+      "tags": [
+        "开发者",
+        "搜索",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Phind",
+      "short": "PH",
+      "category": "search",
+      "desc": "为程序员优化的答案引擎，擅长代码与技术检索。",
+      "url": "https://www.phind.com/",
+      "tags": [
+        "编程",
+        "搜索",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Notion AI",
+      "short": "NO",
+      "category": "write",
+      "desc": "在文档和知识库中完成写作、总结、问答与整理。",
+      "url": "https://www.notion.com/product/ai",
+      "tags": [
+        "知识库",
+        "写作"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Grammarly",
+      "short": "GR",
+      "category": "write",
+      "desc": "英语写作润色、改写、语气与语法检查。",
+      "url": "https://www.grammarly.com/",
+      "tags": [
+        "英文",
+        "润色",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Jasper",
+      "short": "JA",
+      "category": "write",
+      "desc": "面向品牌与营销团队的 AI 内容创作平台。",
+      "url": "https://www.jasper.ai/",
+      "tags": [
+        "营销",
+        "品牌"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Copy.ai",
+      "short": "CO",
+      "category": "write",
+      "desc": "销售与营销文案、工作流和内容自动化。",
+      "url": "https://www.copy.ai/",
+      "tags": [
+        "营销",
+        "工作流"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Writesonic",
+      "short": "WS",
+      "category": "write",
+      "desc": "博客、SEO 与营销内容生成和优化平台。",
+      "url": "https://writesonic.com/",
+      "tags": [
+        "SEO",
+        "营销",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "QuillBot",
+      "short": "QB",
+      "category": "write",
+      "desc": "英文改写、摘要、语法与引用辅助工具。",
+      "url": "https://quillbot.com/",
+      "tags": [
+        "改写",
+        "学术",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "秘塔写作猫",
+      "short": "XM",
+      "category": "write",
+      "desc": "中文写作纠错、改写、续写与文本质量分析。",
+      "url": "https://xiezuocat.com/",
+      "tags": [
+        "国产",
+        "中文",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Midjourney",
+      "short": "MJ",
+      "category": "image",
+      "desc": "高质量艺术与商业视觉生成，风格控制能力强。",
+      "url": "https://www.midjourney.com/",
+      "tags": [
+        "绘图",
+        "高质量"
+      ],
+      "badge": "创作者常用"
+    },
+    {
+      "name": "ChatGPT Images",
+      "short": "CI",
+      "category": "image",
+      "desc": "通过自然语言生成与编辑图像，适合图文一体工作。",
+      "url": "https://chatgpt.com/",
+      "tags": [
+        "绘图",
+        "编辑",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Adobe Firefly",
+      "short": "AF",
+      "category": "image",
+      "desc": "Adobe 的商用友好生成式图像与设计工具。",
+      "url": "https://firefly.adobe.com/",
+      "tags": [
+        "Adobe",
+        "商用",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Ideogram",
+      "short": "ID",
+      "category": "image",
+      "desc": "擅长海报、文字排版与风格化图像生成。",
+      "url": "https://ideogram.ai/",
+      "tags": [
+        "海报",
+        "文字",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Recraft",
+      "short": "RC",
+      "category": "image",
+      "desc": "面向设计师的矢量、图标、品牌与图像生成工具。",
+      "url": "https://www.recraft.ai/",
+      "tags": [
+        "矢量",
+        "设计",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Leonardo AI",
+      "short": "LE",
+      "category": "image",
+      "desc": "游戏资产、产品图与多风格图像创作平台。",
+      "url": "https://leonardo.ai/",
+      "tags": [
+        "资产",
+        "绘图",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "FLUX",
+      "short": "FX",
+      "category": "image",
+      "desc": "Black Forest Labs 的高质量图像模型与创作入口。",
+      "url": "https://playground.bfl.ai/",
+      "tags": [
+        "模型",
+        "绘图"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "即梦 AI",
+      "short": "JM",
+      "category": "image",
+      "desc": "字节旗下 AI 创作平台，覆盖绘图、视频与数字人。",
+      "url": "https://jimeng.jianying.com/",
+      "tags": [
+        "国产",
+        "绘图",
+        "视频"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Sora",
+      "short": "SO",
+      "category": "video",
+      "desc": "OpenAI 的视频生成与故事板创作工具。",
+      "url": "https://sora.com/",
+      "tags": [
+        "视频",
+        "OpenAI"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Runway",
+      "short": "RW",
+      "category": "video",
+      "desc": "专业 AI 视频生成、编辑与视觉特效平台。",
+      "url": "https://runwayml.com/",
+      "tags": [
+        "视频",
+        "编辑"
+      ],
+      "badge": "专业首选"
+    },
+    {
+      "name": "可灵 AI",
+      "short": "KL",
+      "category": "video",
+      "desc": "快手旗下高质量文生视频与图生视频平台。",
+      "url": "https://klingai.kuaishou.com/",
+      "tags": [
+        "国产",
+        "视频",
+        "免费"
+      ],
+      "badge": "热门"
+    },
+    {
+      "name": "Pika",
+      "short": "PK",
+      "category": "video",
+      "desc": "快速生成短视频、特效和创意片段。",
+      "url": "https://pika.art/",
+      "tags": [
+        "短视频",
+        "特效",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Luma Dream Machine",
+      "short": "LU",
+      "category": "video",
+      "desc": "提供自然运动与镜头表现的视频生成工具。",
+      "url": "https://lumalabs.ai/dream-machine",
+      "tags": [
+        "视频",
+        "镜头",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "海螺 AI",
+      "short": "HL",
+      "category": "video",
+      "desc": "MiniMax 旗下视频生成与创意内容平台。",
+      "url": "https://hailuoai.video/",
+      "tags": [
+        "国产",
+        "视频",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "HeyGen",
+      "short": "HG",
+      "category": "video",
+      "desc": "AI 数字人、口播视频与多语言翻译平台。",
+      "url": "https://www.heygen.com/",
+      "tags": [
+        "数字人",
+        "翻译",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Synthesia",
+      "short": "SY",
+      "category": "video",
+      "desc": "企业培训与讲解型 AI 数字人视频平台。",
+      "url": "https://www.synthesia.io/",
+      "tags": [
+        "数字人",
+        "企业"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "剪映",
+      "short": "JY",
+      "category": "video",
+      "desc": "覆盖脚本、字幕、数字人和智能剪辑的视频创作工具。",
+      "url": "https://www.capcut.cn/",
+      "tags": [
+        "国产",
+        "剪辑",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Cursor",
+      "short": "CU",
+      "category": "code",
+      "desc": "AI 原生代码编辑器，擅长跨文件理解、修改与调试。",
+      "url": "https://www.cursor.com/",
+      "tags": [
+        "IDE",
+        "智能体"
+      ],
+      "badge": "开发者常用"
+    },
+    {
+      "name": "Claude Code",
+      "short": "CC",
+      "category": "code",
+      "desc": "在终端中理解代码库、执行任务和协作开发。",
+      "url": "https://claude.com/product/claude-code",
+      "tags": [
+        "终端",
+        "智能体"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "GitHub Copilot",
+      "short": "GC",
+      "category": "code",
+      "desc": "覆盖 IDE、终端与 GitHub 工作流的编程助手。",
+      "url": "https://github.com/features/copilot",
+      "tags": [
+        "GitHub",
+        "IDE"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Windsurf",
+      "short": "WF",
+      "category": "code",
+      "desc": "以智能体工作流为核心的 AI 代码编辑器。",
+      "url": "https://windsurf.com/",
+      "tags": [
+        "IDE",
+        "智能体",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Replit",
+      "short": "RP",
+      "category": "code",
+      "desc": "浏览器内用 AI 构建、运行和部署应用。",
+      "url": "https://replit.com/",
+      "tags": [
+        "全栈",
+        "部署",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "v0",
+      "short": "V0",
+      "category": "code",
+      "desc": "Vercel 的生成式 UI 与前端原型构建工具。",
+      "url": "https://v0.dev/",
+      "tags": [
+        "前端",
+        "UI",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Bolt",
+      "short": "BT",
+      "category": "code",
+      "desc": "在浏览器中通过对话构建并运行全栈 Web 应用。",
+      "url": "https://bolt.new/",
+      "tags": [
+        "全栈",
+        "原型",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Lovable",
+      "short": "LO",
+      "category": "code",
+      "desc": "从自然语言生成可编辑、可部署的产品应用。",
+      "url": "https://lovable.dev/",
+      "tags": [
+        "产品",
+        "全栈",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Trae",
+      "short": "TR",
+      "category": "code",
+      "desc": "字节旗下 AI IDE，提供中文友好的智能体开发体验。",
+      "url": "https://www.trae.ai/",
+      "tags": [
+        "国产",
+        "IDE",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "腾讯云 CodeBuddy",
+      "short": "CB",
+      "category": "code",
+      "desc": "面向开发者的 AI 编程伙伴与 IDE 工具。",
+      "url": "https://copilot.tencent.com/",
+      "tags": [
+        "国产",
+        "IDE",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Gamma",
+      "short": "GA",
+      "category": "office",
+      "desc": "用 AI 快速生成演示文稿、文档与网页。",
+      "url": "https://gamma.app/",
+      "tags": [
+        "PPT",
+        "网页",
+        "免费"
+      ],
+      "badge": "效率推荐"
+    },
+    {
+      "name": "Canva",
+      "short": "CA",
+      "category": "office",
+      "desc": "一站式设计平台，内置文案、图片和演示 AI 能力。",
+      "url": "https://www.canva.com/ai-image-generator/",
+      "tags": [
+        "设计",
+        "演示",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Napkin AI",
+      "short": "NA",
+      "category": "office",
+      "desc": "把文字快速转成流程图、图解与信息视觉。",
+      "url": "https://www.napkin.ai/",
+      "tags": [
+        "图解",
+        "演示",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Beautiful.ai",
+      "short": "BA",
+      "category": "office",
+      "desc": "自动排版与品牌一致的智能演示文稿工具。",
+      "url": "https://www.beautiful.ai/",
+      "tags": [
+        "PPT",
+        "排版"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "WPS AI",
+      "short": "WA",
+      "category": "office",
+      "desc": "融入文档、表格、演示和 PDF 的国产办公助手。",
+      "url": "https://ai.wps.cn/",
+      "tags": [
+        "国产",
+        "办公"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "讯飞智文",
+      "short": "XZ",
+      "category": "office",
+      "desc": "科大讯飞的 AI 文档与 PPT 生成工具。",
+      "url": "https://zhiwen.xfyun.cn/",
+      "tags": [
+        "国产",
+        "PPT",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "NotebookLM",
+      "short": "NL",
+      "category": "research",
+      "desc": "基于自有资料生成摘要、问答、音频概览与学习材料。",
+      "url": "https://notebooklm.google.com/",
+      "tags": [
+        "资料库",
+        "引用",
+        "免费"
+      ],
+      "badge": "学习首选"
+    },
+    {
+      "name": "Elicit",
+      "short": "EL",
+      "category": "research",
+      "desc": "查找论文、提取证据并辅助系统性文献研究。",
+      "url": "https://elicit.com/",
+      "tags": [
+        "论文",
+        "证据",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Consensus",
+      "short": "CS",
+      "category": "research",
+      "desc": "从学术论文中搜索并综合研究结论。",
+      "url": "https://consensus.app/",
+      "tags": [
+        "论文",
+        "搜索",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "SciSpace",
+      "short": "SC",
+      "category": "research",
+      "desc": "论文检索、阅读解释、文献综述与引用辅助。",
+      "url": "https://scispace.com/",
+      "tags": [
+        "论文",
+        "阅读",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Semantic Scholar",
+      "short": "SS",
+      "category": "research",
+      "desc": "Allen Institute 提供的免费学术搜索与推荐引擎。",
+      "url": "https://www.semanticscholar.org/",
+      "tags": [
+        "学术",
+        "搜索",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "ResearchRabbit",
+      "short": "RR",
+      "category": "research",
+      "desc": "通过可视化关系发现论文、作者与研究脉络。",
+      "url": "https://www.researchrabbit.ai/",
+      "tags": [
+        "论文",
+        "图谱",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Scite",
+      "short": "ST",
+      "category": "research",
+      "desc": "分析论文被支持、提及或反驳的引用语境。",
+      "url": "https://scite.ai/",
+      "tags": [
+        "引用",
+        "核查"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Suno",
+      "short": "SU",
+      "category": "audio",
+      "desc": "从文字生成歌曲、歌词与多种风格音乐。",
+      "url": "https://suno.com/",
+      "tags": [
+        "音乐",
+        "歌曲",
+        "免费"
+      ],
+      "badge": "热门"
+    },
+    {
+      "name": "Udio",
+      "short": "UD",
+      "category": "audio",
+      "desc": "高质量 AI 音乐生成与片段延展工具。",
+      "url": "https://www.udio.com/",
+      "tags": [
+        "音乐",
+        "生成",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "ElevenLabs",
+      "short": "XI",
+      "category": "audio",
+      "desc": "自然语音合成、克隆、配音与多语言音频平台。",
+      "url": "https://elevenlabs.io/",
+      "tags": [
+        "配音",
+        "语音",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Fish Audio",
+      "short": "FA",
+      "category": "audio",
+      "desc": "中文友好的语音克隆与文本转语音平台。",
+      "url": "https://fish.audio/",
+      "tags": [
+        "国产",
+        "配音",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Adobe Podcast",
+      "short": "AP",
+      "category": "audio",
+      "desc": "一键增强人声、降噪并改善录音质量。",
+      "url": "https://podcast.adobe.com/",
+      "tags": [
+        "降噪",
+        "播客",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Descript",
+      "short": "DE",
+      "category": "audio",
+      "desc": "像编辑文档一样编辑播客、录音与视频。",
+      "url": "https://www.descript.com/",
+      "tags": [
+        "剪辑",
+        "转写",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Manus",
+      "short": "MA",
+      "category": "agent",
+      "desc": "面向复杂任务交付的通用 AI 智能体。",
+      "url": "https://manus.im/",
+      "tags": [
+        "智能体",
+        "任务"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Dify",
+      "short": "DF",
+      "category": "agent",
+      "desc": "开源 LLM 应用、RAG 与智能体工作流平台。",
+      "url": "https://dify.ai/",
+      "tags": [
+        "开源",
+        "工作流",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Coze",
+      "short": "CZ",
+      "category": "agent",
+      "desc": "字节旗下智能体与自动化工作流开发平台。",
+      "url": "https://www.coze.cn/",
+      "tags": [
+        "国产",
+        "智能体",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "n8n",
+      "short": "N8",
+      "category": "agent",
+      "desc": "可自托管的工作流自动化与 AI 编排平台。",
+      "url": "https://n8n.io/",
+      "tags": [
+        "自动化",
+        "开源",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Zapier AI",
+      "short": "ZA",
+      "category": "agent",
+      "desc": "连接大量 SaaS 服务的自动化与 AI 工作流平台。",
+      "url": "https://zapier.com/ai",
+      "tags": [
+        "自动化",
+        "集成"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Make",
+      "short": "MK",
+      "category": "agent",
+      "desc": "可视化连接应用、数据与 AI 的自动化平台。",
+      "url": "https://www.make.com/",
+      "tags": [
+        "自动化",
+        "可视化",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Flowise",
+      "short": "FL",
+      "category": "agent",
+      "desc": "开源可视化 LLM 工作流与智能体构建器。",
+      "url": "https://flowiseai.com/",
+      "tags": [
+        "开源",
+        "可视化",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "FastGPT",
+      "short": "FG",
+      "category": "agent",
+      "desc": "开源知识库问答、RAG 与 AI 应用编排平台。",
+      "url": "https://fastgpt.io/",
+      "tags": [
+        "国产",
+        "RAG",
+        "开源"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "APINEBULA",
+      "short": "AN",
+      "category": "api",
+      "desc": "统一 API 入口接入主流模型，人民币计费，面向全球开发者。",
+      "url": "https://apinebula.ai/t1QTfq",
+      "tags": [
+        "聚合",
+        "人民币",
+        "API"
+      ],
+      "badge": "本站主推"
+    },
+    {
+      "name": "OpenAI Platform",
+      "short": "OA",
+      "category": "api",
+      "desc": "OpenAI 模型 API、控制台与开发者平台。",
+      "url": "https://platform.openai.com/",
+      "tags": [
+        "模型",
+        "API"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Anthropic Console",
+      "short": "AC",
+      "category": "api",
+      "desc": "Claude 模型 API、提示词工作台与开发控制台。",
+      "url": "https://console.anthropic.com/",
+      "tags": [
+        "Claude",
+        "API"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Google AI Studio",
+      "short": "AI",
+      "category": "api",
+      "desc": "体验和调用 Gemini 模型的开发者工作台。",
+      "url": "https://aistudio.google.com/",
+      "tags": [
+        "Gemini",
+        "API",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "GroqCloud",
+      "short": "GQ",
+      "category": "api",
+      "desc": "以高推理速度为特点的模型 API 平台。",
+      "url": "https://console.groq.com/",
+      "tags": [
+        "高速",
+        "API",
+        "免费"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "OpenRouter",
+      "short": "OR",
+      "category": "api",
+      "desc": "通过统一接口调用多家模型的聚合 API。",
+      "url": "https://openrouter.ai/",
+      "tags": [
+        "聚合",
+        "API"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Replicate",
+      "short": "RE",
+      "category": "api",
+      "desc": "通过 API 运行和部署开源 AI 模型。",
+      "url": "https://replicate.com/",
+      "tags": [
+        "开源模型",
+        "API"
+      ],
+      "badge": ""
+    },
+    {
+      "name": "Hugging Face",
+      "short": "HF",
+      "category": "api",
+      "desc": "模型、数据集、Spaces 与推理服务社区平台。",
+      "url": "https://huggingface.co/",
+      "tags": [
+        "开源",
+        "社区",
+        "免费"
+      ],
+      "badge": ""
+    }
+  ]
+}

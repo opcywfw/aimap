@@ -1,0 +1,44 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "星图 AI 导航只读 API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://ai.opcmap.com"
+    }
+  ],
+  "paths": {
+    "/api/tools.json": {
+      "get": {
+        "summary": "获取 AI 工具目录",
+        "responses": {
+          "200": {
+            "description": "工具列表"
+          }
+        }
+      }
+    },
+    "/api/categories.json": {
+      "get": {
+        "summary": "获取分类目录",
+        "responses": {
+          "200": {
+            "description": "分类列表"
+          }
+        }
+      }
+    },
+    "/api/apinebula.json": {
+      "get": {
+        "summary": "获取 APINEBULA 推广入口",
+        "responses": {
+          "200": {
+            "description": "推广入口"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+/*
+  Content-Signal: search=yes, ai-input=yes, ai-train=no, use=reference
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large
+  Link: </sitemap.xml>; rel="sitemap"; type="application/xml", </index.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="alternate"; type="text/plain", </api-catalog.json>; rel="api-catalog"; type="application/json"
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

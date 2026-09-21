@@ -1,0 +1,57 @@
+[
+  {
+    "id": "chat",
+    "name": "对话助手",
+    "count": 12
+  },
+  {
+    "id": "search",
+    "name": "智能搜索",
+    "count": 6
+  },
+  {
+    "id": "write",
+    "name": "写作内容",
+    "count": 7
+  },
+  {
+    "id": "image",
+    "name": "图像设计",
+    "count": 8
+  },
+  {
+    "id": "video",
+    "name": "视频创作",
+    "count": 9
+  },
+  {
+    "id": "code",
+    "name": "编程开发",
+    "count": 10
+  },
+  {
+    "id": "office",
+    "name": "办公演示",
+    "count": 6
+  },
+  {
+    "id": "research",
+    "name": "学习研究",
+    "count": 7
+  },
+  {
+    "id": "audio",
+    "name": "音频语音",
+    "count": 6
+  },
+  {
+    "id": "agent",
+    "name": "智能体自动化",
+    "count": 8
+  },
+  {
+    "id": "api",
+    "name": "模型与 API",
+    "count": 8
+  }
+]
