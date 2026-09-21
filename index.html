@@ -1,2012 +1,386 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AI 教程导航站，汇集 B 站优质视频、开放课程、国家教育平台免费资源与实用工具。" />
-  <title>AI 学习地图｜优质 AI 教程导航</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>星图 AI 导航｜好用的 AI 工具，一站找全</title>
+  <meta name="description" content="精选国内外 AI 对话、搜索、写作、绘图、视频、编程、办公、研究、音频与智能体工具，并推荐 APINEBULA 一站式 AI API 聚合平台。">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="https://ai.opcmap.com/">
+  <link rel="alternate" type="text/markdown" href="https://ai.opcmap.com/index.md" title="星图 AI 导航 Markdown 版">
+  <link rel="sitemap" type="application/xml" href="https://ai.opcmap.com/sitemap.xml">
+  <link rel="alternate" type="text/plain" href="https://ai.opcmap.com/llms.txt" title="LLM 站点说明">
+  <meta name="theme-color" content="#f7f6f2">
+  <meta name="color-scheme" content="light">
+  <link rel="preload" href="assets/api-orbit.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23181715'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%23ff6b45'/%3E%3Cellipse cx='32' cy='32' rx='23' ry='10' fill='none' stroke='%23fff' stroke-width='3' transform='rotate(-24 32 32)'/%3E%3Ccircle cx='52' cy='22' r='4' fill='%2398b7ff'/%3E%3C/svg%3E">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"星图 AI 导航","description":"精选实用 AI 工具与模型 API 服务的中文导航。","url":"https://ai.opcmap.com/","mainEntity":{"@type":"ItemList","name":"AI 工具目录","numberOfItems":87}}</script>
+  <script>document.documentElement.dataset.theme=localStorage.getItem('starmap-theme')||((matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light')</script>
   <style>
-    :root {
-      --bg: #f5f7fb;
-      --surface: rgba(255, 255, 255, 0.84);
-      --surface-solid: #ffffff;
-      --text: #182033;
-      --muted: #6f7890;
-      --line: #e6eaf2;
-      --primary: #5b67f1;
-      --primary-dark: #4652d6;
-      --accent: #12b8a6;
-      --warning: #ff9e45;
-      --shadow: 0 18px 48px rgba(52, 62, 102, 0.10);
-      --shadow-hover: 0 24px 60px rgba(52, 62, 102, 0.17);
-      --radius-lg: 28px;
-      --radius-md: 20px;
-      --radius-sm: 14px;
-      --container: min(1180px, calc(100% - 32px));
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 10% 0%, rgba(91, 103, 241, 0.12), transparent 34%),
-        radial-gradient(circle at 100% 15%, rgba(18, 184, 166, 0.10), transparent 30%),
-        var(--bg);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    .container {
-      width: var(--container);
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(245, 247, 251, 0.78);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(230, 234, 242, 0.8);
-    }
-
-    .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      background: linear-gradient(135deg, var(--primary), #8a5df6 58%, var(--accent));
-      box-shadow: 0 10px 24px rgba(91, 103, 241, 0.26);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 650;
-    }
-
-    .nav-links a {
-      position: relative;
-      transition: color .25s ease;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 100%;
-      bottom: -7px;
-      height: 2px;
-      background: var(--primary);
-      border-radius: 99px;
-      transition: right .25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .nav-links a:hover::after {
-      right: 0;
-    }
-
-    .nav-action {
-      padding: 10px 16px;
-      border-radius: 12px;
-      background: var(--text);
-      color: white;
-      font-size: 14px;
-      font-weight: 700;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .nav-action:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(24, 32, 51, .18);
-    }
-
-    .hero {
-      padding: 74px 0 42px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
-      gap: 48px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(91, 103, 241, 0.09);
-      color: var(--primary-dark);
-      font-size: 13px;
-      font-weight: 750;
-      margin-bottom: 18px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 5px rgba(18, 184, 166, .12);
-    }
-
-    h1 {
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.08;
-      letter-spacing: -0.055em;
-      max-width: 760px;
-    }
-
-    .gradient-text {
-      background: linear-gradient(100deg, var(--primary) 10%, #8860ef 48%, var(--accent));
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-copy {
-      margin-top: 22px;
-      max-width: 700px;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .search-wrap {
-      margin-top: 30px;
-      padding: 8px;
-      display: flex;
-      gap: 8px;
-      max-width: 650px;
-      background: rgba(255, 255, 255, .9);
-      border: 1px solid rgba(230, 234, 242, .95);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .search-wrap input {
-      width: 100%;
-      border: 0;
-      outline: 0;
-      background: transparent;
-      padding: 11px 14px;
-      color: var(--text);
-    }
-
-    .search-wrap button {
-      border: 0;
-      color: #fff;
-      background: var(--primary);
-      padding: 11px 18px;
-      border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background .25s ease, transform .25s ease;
-      white-space: nowrap;
-    }
-
-    .search-wrap button:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-    }
-
-    .hero-tags {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .hero-tags span {
-      padding: 6px 10px;
-      background: rgba(255, 255, 255, .72);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-    }
-
-    .hero-panel {
-      position: relative;
-      min-height: 470px;
-      border-radius: 34px;
-      overflow: hidden;
-      background: linear-gradient(145deg, #172033, #252f58 62%, #214c53);
-      box-shadow: 0 35px 80px rgba(37, 47, 88, .26);
-    }
-
-    .hero-panel::before,
-    .hero-panel::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(2px);
-    }
-
-    .hero-panel::before {
-      width: 280px;
-      height: 280px;
-      right: -90px;
-      top: -80px;
-      background: rgba(122, 104, 246, .36);
-    }
-
-    .hero-panel::after {
-      width: 240px;
-      height: 240px;
-      left: -80px;
-      bottom: -100px;
-      background: rgba(18, 184, 166, .24);
-    }
-
-    .panel-content {
-      position: relative;
-      z-index: 2;
-      padding: 30px;
-      color: white;
-    }
-
-    .window-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 28px;
-    }
-
-    .dots {
-      display: flex;
-      gap: 7px;
-    }
-
-    .dots span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .48);
-    }
-
-    .panel-badge {
-      font-size: 12px;
-      color: rgba(255, 255, 255, .72);
-    }
-
-    .panel-title {
-      font-size: 28px;
-      line-height: 1.2;
-      letter-spacing: -.03em;
-      max-width: 320px;
-    }
-
-    .course-stack {
-      margin-top: 26px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .mini-course {
-      display: grid;
-      grid-template-columns: 48px 1fr auto;
-      align-items: center;
-      gap: 13px;
-      padding: 14px;
-      border: 1px solid rgba(255, 255, 255, .10);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, .08);
-      backdrop-filter: blur(12px);
-      transition: transform .28s ease, background .28s ease;
-    }
-
-    .mini-course:hover {
-      transform: translateX(6px);
-      background: rgba(255, 255, 255, .14);
-    }
-
-    .mini-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-weight: 850;
-      background: rgba(255, 255, 255, .12);
-    }
-
-    .mini-course strong {
-      display: block;
-      font-size: 14px;
-    }
-
-    .mini-course small {
-      color: rgba(255, 255, 255, .64);
-    }
-
-    .mini-arrow {
-      font-size: 18px;
-      color: rgba(255, 255, 255, .7);
-    }
-
-    .stats {
-      margin-top: 52px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .stat {
-      padding: 20px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, .72);
-      border: 1px solid rgba(230, 234, 242, .9);
-      text-align: center;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 24px;
-      letter-spacing: -.03em;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    section {
-      padding: 56px 0;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 26px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(28px, 4vw, 42px);
-      letter-spacing: -.04em;
-      line-height: 1.18;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      max-width: 600px;
-      margin-top: 8px;
-    }
-
-    .text-link {
-      color: var(--primary);
-      font-weight: 750;
-      font-size: 14px;
-      white-space: nowrap;
-    }
-
-    .text-link:hover {
-      color: var(--primary-dark);
-    }
-
-    .filter-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 26px;
-    }
-
-    .filter-btn {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .72);
-      color: var(--muted);
-      padding: 9px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 700;
-      transition: all .24s ease;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      color: white;
-      background: var(--primary);
-      border-color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    .course-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .course-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      background: var(--surface-solid);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: 0 10px 28px rgba(52, 62, 102, 0.06);
-      transition: transform .32s cubic-bezier(.2,.8,.2,1), box-shadow .32s ease, border-color .32s ease;
-    }
-
-    .course-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(91, 103, 241, .2);
-    }
-
-    .course-cover {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      padding: 22px;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .course-cover::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.26), transparent 65%);
-    }
-
-    .cover-a { background: linear-gradient(135deg, #6d57ee, #3659d9 55%, #27b7b1); }
-    .cover-b { background: linear-gradient(135deg, #15233d, #36507b 50%, #2a9d8f); }
-    .cover-c { background: linear-gradient(135deg, #f48363, #d34c8c 52%, #704ed8); }
-    .cover-d { background: linear-gradient(135deg, #126a8a, #1f9d8f 52%, #7dcf8f); }
-    .cover-e { background: linear-gradient(135deg, #1d2742, #3e4777 52%, #6f60dd); }
-    .cover-f { background: linear-gradient(135deg, #ef7b45, #ee4d77 54%, #8b4fe7); }
-
-    .cover-top,
-    .cover-main {
-      position: relative;
-      z-index: 2;
-    }
-
-    .cover-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .source-tag,
-    .level-tag {
-      font-size: 12px;
-      font-weight: 750;
-      padding: 6px 9px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.16);
-      backdrop-filter: blur(8px);
-    }
-
-    .cover-main strong {
-      font-size: 24px;
-      line-height: 1.15;
-      display: block;
-      letter-spacing: -.03em;
-      max-width: 250px;
-    }
-
-    .cover-main span {
-      font-size: 13px;
-      color: rgba(255,255,255,.75);
-    }
-
-    .course-body {
-      flex: 1;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .course-body h3 {
-      font-size: 18px;
-      line-height: 1.45;
-      margin-bottom: 8px;
-    }
-
-    .course-body p {
-      color: var(--muted);
-      font-size: 14px;
-      flex: 1;
-    }
-
-    .course-meta {
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .course-enter {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border-radius: 11px;
-      color: var(--primary);
-      background: rgba(91, 103, 241, .09);
-      transition: all .25s ease;
-    }
-
-    .course-card:hover .course-enter {
-      color: #fff;
-      background: var(--primary);
-      transform: translateX(3px);
-    }
-
-    .resource-layout {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 22px;
-    }
-
-    .resource-panel {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.76);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      box-shadow: 0 12px 34px rgba(52,62,102,.06);
-    }
-
-    .resource-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .resource-item {
-      display: grid;
-      grid-template-columns: 46px 1fr auto;
-      gap: 14px;
-      align-items: center;
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid transparent;
-      transition: all .25s ease;
-    }
-
-    .resource-item:hover {
-      background: #fff;
-      border-color: var(--line);
-      transform: translateX(6px);
-      box-shadow: 0 10px 24px rgba(52,62,102,.07);
-    }
-
-    .resource-icon {
-      width: 46px;
-      height: 46px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: rgba(91,103,241,.09);
-      color: var(--primary);
-      font-weight: 900;
-    }
-
-    .resource-item strong {
-      display: block;
-      font-size: 15px;
-    }
-
-    .resource-item small {
-      color: var(--muted);
-    }
-
-    .resource-arrow {
-      color: var(--muted);
-      transition: transform .25s ease;
-    }
-
-    .resource-item:hover .resource-arrow {
-      transform: translateX(4px);
-      color: var(--primary);
-    }
-
-    .roadmap {
-      position: relative;
-      overflow: hidden;
-      color: white;
-      background: linear-gradient(145deg, #18213a, #29365f 55%, #1e5b5a);
-    }
-
-    .roadmap::before {
-      content: "";
-      position: absolute;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      right: -120px;
-      top: -120px;
-      background: rgba(115, 91, 241, .32);
-    }
-
-    .roadmap .section-head,
-    .roadmap-grid {
-      position: relative;
-      z-index: 2;
-    }
-
-    .roadmap .section-head p,
-    .roadmap .text-link {
-      color: rgba(255,255,255,.7);
-    }
-
-    .roadmap-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    .step-card {
-      padding: 22px;
-      border: 1px solid rgba(255,255,255,.11);
-      background: rgba(255,255,255,.07);
-      border-radius: 18px;
-      backdrop-filter: blur(10px);
-      transition: transform .28s ease, background .28s ease;
-    }
-
-    .step-card:hover {
-      transform: translateY(-7px);
-      background: rgba(255,255,255,.12);
-    }
-
-    .step-no {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: rgba(255,255,255,.12);
-      font-weight: 800;
-      margin-bottom: 22px;
-    }
-
-    .step-card h3 {
-      margin-bottom: 8px;
-    }
-
-    .step-card p {
-      color: rgba(255,255,255,.65);
-      font-size: 14px;
-    }
-
-    .newsletter {
-      padding: 42px 0 76px;
-    }
-
-    .newsletter-box {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 24px;
-      padding: 34px;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(120deg, rgba(91,103,241,.11), rgba(18,184,166,.09));
-      border: 1px solid rgba(91,103,241,.12);
-    }
-
-    .newsletter-box h2 {
-      font-size: 30px;
-      letter-spacing: -.035em;
-    }
-
-    .newsletter-box p {
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    .newsletter-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 11px 16px;
-      border-radius: 12px;
-      font-weight: 750;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      color: #fff;
-      background: var(--primary);
-      box-shadow: 0 10px 24px rgba(91,103,241,.22);
-    }
-
-    .btn-secondary {
-      background: #fff;
-      border: 1px solid var(--line);
-    }
-
-
-
-    /* 一键下载板块 */
-    .download-section {
-      padding-top: 26px;
-    }
-
-    .download-box {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 28px;
-      padding: 38px;
-      border-radius: var(--radius-lg);
-      color: #fff;
-      background: linear-gradient(135deg, #4f5eea 0%, #7457e8 52%, #159f98 100%);
-      box-shadow: 0 24px 60px rgba(75, 83, 203, .22);
-    }
-
-    .download-box::before,
-    .download-box::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,.10);
-    }
-
-    .download-box::before {
-      width: 260px;
-      height: 260px;
-      right: -90px;
-      top: -130px;
-    }
-
-    .download-box::after {
-      width: 170px;
-      height: 170px;
-      left: 45%;
-      bottom: -120px;
-    }
-
-    .download-copy,
-    .download-actions {
-      position: relative;
-      z-index: 2;
-    }
-
-    .download-kicker {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 10px;
-      margin-bottom: 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.14);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .download-box h2 {
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.2;
-      letter-spacing: -.04em;
-    }
-
-    .download-box p {
-      max-width: 680px;
-      margin-top: 10px;
-      color: rgba(255,255,255,.78);
-    }
-
-    .download-trigger {
-      border: 0;
-      cursor: pointer;
-      min-width: 156px;
-      padding: 14px 20px;
-      border-radius: 14px;
-      color: var(--text);
-      background: #fff;
-      font-weight: 850;
-      box-shadow: 0 14px 30px rgba(24,32,51,.18);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .download-trigger:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 20px 38px rgba(24,32,51,.24);
-    }
-
-    /* AI 付费社群 */
-    .community-section {
-      padding-top: 72px;
-    }
-
-    .community-card {
-      display: grid;
-      grid-template-columns: 1.3fr .7fr;
-      gap: 34px;
-      align-items: center;
-      padding: 38px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,.82);
-      box-shadow: var(--shadow);
-    }
-
-    .community-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 11px;
-      margin-bottom: 14px;
-      border-radius: 999px;
-      color: var(--primary-dark);
-      background: rgba(91,103,241,.09);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .community-copy h2 {
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.2;
-      letter-spacing: -.045em;
-    }
-
-    .community-copy > p {
-      margin-top: 12px;
-      color: var(--muted);
-    }
-
-    .community-points {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin: 24px 0;
-    }
-
-    .community-point {
-      padding: 16px;
-      border-radius: 16px;
-      background: #f7f8fd;
-      border: 1px solid var(--line);
-    }
-
-    .community-point strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 15px;
-    }
-
-    .community-point span {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .community-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .community-visual {
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      border-radius: 24px;
-      color: #fff;
-      text-align: center;
-      background: linear-gradient(145deg, #172033, #303a68 58%, #1f6460);
-    }
-
-    .qr-placeholder {
-      width: 186px;
-      aspect-ratio: 1;
-      padding: 14px;
-      display: grid;
-      place-items: center;
-      border-radius: 18px;
-      color: var(--text);
-      background:
-        linear-gradient(90deg, #182033 10px, transparent 10px) 0 0/30px 30px,
-        linear-gradient(#182033 10px, transparent 10px) 0 0/30px 30px,
-        #fff;
-      border: 8px solid #fff;
-      box-shadow: 0 18px 36px rgba(0,0,0,.22);
-      overflow: hidden;
-    }
-
-    .qr-placeholder span {
-      padding: 8px 10px;
-      border-radius: 10px;
-      background: rgba(255,255,255,.92);
-      font-size: 13px;
-      font-weight: 850;
-    }
-
-    .community-visual strong {
-      margin-top: 16px;
-      font-size: 17px;
-    }
-
-    .community-visual small {
-      color: rgba(255,255,255,.68);
-    }
-
-    /* 下载弹窗 */
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      display: grid;
-      place-items: center;
-      padding: 20px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity .25s ease, visibility .25s ease;
-    }
-
-    .modal.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(16,22,38,.56);
-      backdrop-filter: blur(10px);
-    }
-
-    .modal-dialog {
-      position: relative;
-      z-index: 2;
-      width: min(500px, 100%);
-      padding: 28px;
-      border-radius: 24px;
-      background: #fff;
-      box-shadow: 0 30px 90px rgba(18,24,46,.30);
-      transform: translateY(18px) scale(.98);
-      transition: transform .28s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .modal.open .modal-dialog {
-      transform: translateY(0) scale(1);
-    }
-
-    .modal-close {
-      position: absolute;
-      right: 18px;
-      top: 18px;
-      width: 38px;
-      height: 38px;
-      border: 0;
-      border-radius: 12px;
-      cursor: pointer;
-      color: var(--muted);
-      background: #f2f4f8;
-      font-size: 22px;
-    }
-
-    .modal-dialog h3 {
-      padding-right: 46px;
-      font-size: 26px;
-      letter-spacing: -.03em;
-    }
-
-    .modal-dialog > p {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .cloud-options {
-      display: grid;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .cloud-option {
-      display: grid;
-      grid-template-columns: 50px 1fr auto;
-      align-items: center;
-      gap: 14px;
-      padding: 15px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
-
-    .cloud-option:hover {
-      transform: translateY(-3px);
-      border-color: rgba(91,103,241,.28);
-      box-shadow: 0 16px 34px rgba(52,62,102,.12);
-    }
-
-    .cloud-icon {
-      width: 50px;
-      height: 50px;
-      display: grid;
-      place-items: center;
-      border-radius: 15px;
-      color: #fff;
-      font-weight: 900;
-    }
-
-    .cloud-icon.baidu { background: linear-gradient(135deg, #3468ff, #6b91ff); }
-    .cloud-icon.quark { background: linear-gradient(135deg, #7657ff, #a76cff); }
-
-    .cloud-option strong { display: block; }
-    .cloud-option small { color: var(--muted); }
-    .cloud-arrow { color: var(--primary); font-size: 20px; }
-
-    body.modal-lock { overflow: hidden; }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-      margin-bottom: 18px;
-    }
-
-    .footer-links a {
-      transition: color .22s ease, transform .22s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--primary);
-      transform: translateY(-1px);
-    }
-
-
-
-    /* 可折叠文字链接板块 */
-    .link-directory-section {
-      padding: 26px 0 58px;
-    }
-
-    .link-directory-section.community-links-section {
-      padding: 24px 0 72px;
-    }
-
-    .link-directory-box {
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,.78);
-      box-shadow: 0 12px 34px rgba(52,62,102,.06);
-    }
-
-    .link-directory-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 22px;
-      margin-bottom: 20px;
-    }
-
-    .link-directory-head h2 {
-      font-size: clamp(24px, 3vw, 32px);
-      line-height: 1.25;
-      letter-spacing: -.035em;
-    }
-
-    .link-directory-head p {
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .link-toggle-btn {
-      flex: 0 0 auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      border: 1px solid rgba(91,103,241,.18);
-      border-radius: 12px;
-      padding: 9px 13px;
-      color: var(--primary-dark);
-      background: rgba(91,103,241,.07);
-      font-weight: 750;
-      cursor: pointer;
-      transition: transform .25s ease, color .25s ease, background .25s ease, box-shadow .25s ease;
-    }
-
-    .link-toggle-btn:hover {
-      color: #fff;
-      background: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(91,103,241,.18);
-    }
-
-    .link-toggle-icon {
-      width: 16px;
-      height: 16px;
-      transition: transform .28s ease;
-    }
-
-    .link-toggle-btn[aria-expanded="true"] .link-toggle-icon {
-      transform: rotate(180deg);
-    }
-
-    .text-link-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px 18px;
-    }
-
-    .compact-text-link {
-      min-width: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border: 1px solid transparent;
-      border-radius: 12px;
-      color: #394158;
-      font-size: 14px;
-      transition: color .23s ease, background .23s ease, border-color .23s ease, transform .23s ease, box-shadow .23s ease;
-    }
-
-    .compact-text-link::before {
-      content: "";
-      flex: 0 0 auto;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 0 4px rgba(91,103,241,.09);
-    }
-
-    .compact-text-link span {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .compact-text-link::after {
-      content: "↗";
-      margin-left: auto;
-      color: #a4aabe;
-      opacity: 0;
-      transform: translateX(-4px);
-      transition: opacity .23s ease, transform .23s ease, color .23s ease;
-    }
-
-    .compact-text-link:hover {
-      color: var(--primary-dark);
-      background: #fff;
-      border-color: rgba(91,103,241,.14);
-      transform: translateX(4px);
-      box-shadow: 0 8px 22px rgba(52,62,102,.07);
-    }
-
-    .compact-text-link:hover::after {
-      color: var(--primary);
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .compact-text-link.link-item-hidden {
-      display: none;
-    }
-
-    .link-directory-status {
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: right;
-    }
-
-    /* 右下角回到顶部 */
-    .back-to-top {
-      position: fixed;
-      right: 26px;
-      bottom: 26px;
-      z-index: 90;
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: 16px;
-      color: #fff;
-      background: linear-gradient(135deg, var(--primary), #7960ec 58%, var(--accent));
-      box-shadow: 0 14px 32px rgba(64,72,170,.30);
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(14px) scale(.9);
-      transition: opacity .25s ease, visibility .25s ease, transform .25s ease, box-shadow .25s ease;
-    }
-
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0) scale(1);
-    }
-
-    .back-to-top:hover {
-      transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 20px 40px rgba(64,72,170,.38);
-    }
-
-    .back-to-top svg {
-      width: 22px;
-      height: 22px;
-      stroke: currentColor;
-      stroke-width: 2.4;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    footer {
-      padding: 0 0 34px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding-top: 24px;
-      border-top: 1px solid var(--line);
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .resource-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-panel {
-        min-height: auto;
-      }
-
-      .course-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .roadmap-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .newsletter-box,
-      .download-box,
-      .community-card {
-        grid-template-columns: 1fr;
-      }
-
-      .community-points {
-        grid-template-columns: 1fr;
-      }
-
-      .text-link-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .newsletter-actions {
-        justify-content: flex-start;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-
-      .nav-action {
-        padding: 9px 13px;
-      }
-
-      .hero {
-        padding-top: 46px;
-      }
-
-      h1 {
-        font-size: 44px;
-      }
-
-      .search-wrap {
-        flex-direction: column;
-        border-radius: 16px;
-      }
-
-      .search-wrap button {
-        width: 100%;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .course-grid,
-      .roadmap-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head,
-      .footer-row {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .resource-panel,
-      .newsletter-box,
-      .download-box,
-      .community-card {
-        padding: 22px;
-      }
-
-      .download-trigger {
-        width: 100%;
-      }
-
-      .link-directory-box {
-        padding: 20px;
-      }
-
-      .link-directory-head {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .link-toggle-btn {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .text-link-grid {
-        grid-template-columns: 1fr;
-        gap: 7px;
-      }
-
-      .link-directory-status {
-        text-align: left;
-      }
-
-      .back-to-top {
-        right: 16px;
-        bottom: 16px;
-        width: 46px;
-        height: 46px;
-        border-radius: 15px;
-      }
-    }
+    :root{--ink:#171715;--muted:#6f6e68;--line:#deddd7;--paper:#f7f6f2;--card:#fff;--accent:#f2673f;--accent-2:#ff9b78;--blue:#2962ff;--shadow:0 16px 50px rgba(23,23,21,.08);--radius:22px;--max:1320px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,"SF Pro Display","PingFang SC","Microsoft YaHei",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    button{color:inherit}
+    .shell{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(222,221,215,.7);background:rgba(247,246,242,.84);backdrop-filter:blur(18px)}
+    .nav{height:72px;display:flex;align-items:center;gap:30px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.03em;font-size:19px;white-space:nowrap}
+    .brand-mark{width:34px;height:34px;position:relative;display:grid;place-items:center;border-radius:11px;background:var(--ink);box-shadow:0 8px 18px rgba(23,23,21,.14)}
+    .brand-mark:before{content:"";width:17px;height:17px;border:2px solid #fff;border-radius:50%;transform:rotate(-25deg) scaleY(.48)}
+    .brand-mark:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:12px -7px 0 -1px #9eb8ff}
+    .brand small{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.08em;margin-left:2px}
+    .nav-links{display:flex;align-items:center;gap:22px;color:#4f4e49;font-size:14px;font-weight:650;margin-right:auto}
+    .nav-links a{transition:.2s ease}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-action{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:10px 15px;border-radius:999px;font-size:13px;font-weight:750;transition:.2s ease}
+    .nav-action:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(23,23,21,.08)}
+    .nav-action i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(242,103,63,.12)}
+    .hero{padding:56px 0 30px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr);gap:22px;align-items:stretch}
+    .hero-copy{min-height:414px;padding:44px;border-radius:30px;background:var(--card);border:1px solid rgba(222,221,215,.88);position:relative;overflow:hidden}
+    .hero-copy:after{content:"";position:absolute;inset:auto -100px -150px auto;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,155,120,.21),rgba(255,255,255,0) 68%);pointer-events:none}
+    .eyebrow{display:flex;align-items:center;gap:9px;color:var(--accent);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:24px;height:1px;background:currentColor}
+    h1{max-width:720px;margin:23px 0 18px;font-size:clamp(42px,6vw,74px);line-height:.98;letter-spacing:-.065em;font-weight:850}
+    h1 span{color:var(--accent)}
+    .lead{max-width:640px;margin:0;color:#686761;font-size:17px;line-height:1.75}
+    .search-wrap{position:relative;z-index:2;margin-top:28px;max-width:710px}
+    .search{height:62px;width:100%;border:1px solid #d7d5cf;border-radius:18px;background:#fbfbf9;color:var(--ink);padding:0 130px 0 54px;font-size:16px;outline:none;box-shadow:0 10px 24px rgba(23,23,21,.06);transition:.2s ease}
+    .search:focus{border-color:#252521;box-shadow:0 0 0 4px rgba(23,23,21,.07),0 15px 35px rgba(23,23,21,.09)}
+    .search-icon{position:absolute;left:21px;top:20px;width:21px;height:21px;border:2px solid #77756f;border-radius:50%}
+    .search-icon:after{content:"";position:absolute;width:8px;height:2px;background:#77756f;right:-6px;bottom:-3px;transform:rotate(45deg);border-radius:2px}
+    .shortcut{position:absolute;right:12px;top:12px;height:38px;display:flex;align-items:center;gap:7px;color:#76746e;font-size:12px;font-weight:650;background:#efeee9;border:1px solid #e3e1db;border-radius:11px;padding:0 12px}
+    .shortcut kbd{font-family:inherit;background:#fff;border:1px solid #d8d6d0;border-bottom-width:2px;border-radius:6px;padding:2px 6px}
+    .hotline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:17px;color:#7c7a73;font-size:13px}
+    .hotline button{border:0;background:transparent;padding:4px 2px;cursor:pointer;color:#5f5d57}
+    .hotline button:hover{color:var(--accent)}
+    .api-card{position:relative;overflow:hidden;min-height:414px;border-radius:30px;background:#181817;color:#fff;padding:34px;border:1px solid #292927;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .api-card:before{content:"";position:absolute;inset:-20% -20% 16% 12%;background:radial-gradient(circle at 56% 54%,rgba(242,103,63,.28),transparent 38%),radial-gradient(circle at 80% 28%,rgba(41,98,255,.14),transparent 28%)}
+    .api-card>*{position:relative;z-index:1}
+    .api-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+    .api-badge{display:inline-flex;align-items:center;gap:8px;color:#ffb49e;font-size:12px;font-weight:800;letter-spacing:.07em}
+    .api-badge:before{content:"";width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 18px var(--accent)}
+    .sponsored{font-size:11px;color:#85857f;border:1px solid #3a3a37;border-radius:999px;padding:5px 8px}
+    .orbit{position:absolute;right:-32px;top:49px;width:min(100%,430px);height:auto;opacity:.92;filter:drop-shadow(0 22px 28px rgba(0,0,0,.24));pointer-events:none}
+    .api-copy{margin-top:auto;max-width:390px}
+    .api-copy h2{font-size:34px;line-height:1.06;letter-spacing:-.045em;margin:0 0 12px}
+    .api-copy h2 span{color:var(--accent-2)}
+    .api-copy p{color:#b4b3ac;font-size:14px;line-height:1.65;margin:0 0 20px}
+    .api-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:12px 15px;font-weight:780;font-size:14px;border:1px solid transparent;transition:.2s ease}
+    .btn-primary{background:#fff;color:#171715}
+    .btn-primary:hover{background:#ffede7;transform:translateY(-1px)}
+    .btn-ghost{border-color:#44443f;color:#d5d4ce}
+    .btn-ghost:hover{border-color:#77756e;color:#fff}
+    .trust{padding:18px 0 5px;display:flex;align-items:center;gap:22px;color:#74736d;font-size:13px}
+    .trust strong{color:#282824;font-size:14px}
+    .trust-list{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .trust-list span{display:flex;align-items:center;gap:7px}
+    .trust-list span:before{content:"✓";display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#e9e7e1;color:#42413d;font-size:11px;font-weight:900}
+    .content{padding:30px 0 80px}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:20px}
+    .section-head h2{font-size:31px;letter-spacing:-.04em;margin:0 0 6px}
+    .section-head p{margin:0;color:var(--muted);font-size:14px}
+    .result-count{font-size:13px;color:#77756e;white-space:nowrap}
+    .category-bar{position:sticky;top:84px;z-index:30;display:flex;gap:8px;overflow:auto;padding:10px;margin:0 -10px 20px;scrollbar-width:none;background:linear-gradient(var(--paper) 72%,transparent)}
+    .category-bar::-webkit-scrollbar{display:none}
+    .chip{display:flex;align-items:center;gap:8px;flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;cursor:pointer;font-size:13px;font-weight:700;color:#62615b;transition:.2s ease}
+    .chip:hover{border-color:#a6a49d;color:var(--ink)}
+    .chip.active{background:var(--ink);border-color:var(--ink);color:#fff;box-shadow:0 7px 18px rgba(23,23,21,.13)}
+    .chip b{font-size:11px;opacity:.62;font-weight:750}
+    .tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+    .tool-card{position:relative;min-height:188px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:19px;display:flex;flex-direction:column;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;animation:cardIn .35s both}
+    .tool-card:hover{transform:translateY(-3px);border-color:#b8b6af;box-shadow:0 14px 34px rgba(23,23,21,.08)}
+    @keyframes cardIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    .tool-top{display:flex;align-items:center;gap:11px}
+    .tool-logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--logo-bg,#f0efeb);color:var(--logo-ink,#292925);font-weight:850;font-size:13px;letter-spacing:-.04em;border:1px solid rgba(0,0,0,.035)}
+    .tool-name{font-size:16px;font-weight:800;letter-spacing:-.02em;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .tool-name small{display:block;color:#96938c;font-size:11px;font-weight:650;letter-spacing:0;margin-top:3px}
+    .fav{margin-left:auto;width:34px;height:34px;border:0;background:transparent;border-radius:10px;cursor:pointer;display:grid;place-items:center;color:#aaa8a1;font-size:20px;line-height:1}
+    .fav:hover{background:#f1f0eb;color:#5b5954}
+    .fav.active{color:var(--accent)}
+    .tool-desc{color:#6c6a64;font-size:13px;line-height:1.55;margin:14px 0 13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .tool-foot{display:flex;align-items:center;gap:6px;margin-top:auto}
+    .tag{border-radius:999px;padding:5px 8px;background:#f1f0eb;color:#75736d;font-size:11px;font-weight:650}
+    .tag.free{background:#eaf8ee;color:#287643}
+    .visit{margin-left:auto;display:flex;align-items:center;gap:5px;font-size:12px;font-weight:800;color:#393833}
+    .visit span{transition:transform .2s ease}
+    .tool-card:hover .visit span{transform:translate(2px,-2px)}
+    .empty{grid-column:1/-1;background:#fff;border:1px dashed #cbc9c2;border-radius:20px;padding:70px 20px;text-align:center;color:#77756e}
+    .empty strong{display:block;color:#33322e;font-size:19px;margin-bottom:8px}
+    .collections{margin-top:62px}
+    .collection-grid{display:grid;grid-template-columns:1.15fr .85fr .85fr;gap:14px}
+    .collection{min-height:230px;border-radius:22px;padding:26px;border:1px solid var(--line);background:#fff;position:relative;overflow:hidden}
+    .collection.dark{background:#1b1b19;color:#fff;border-color:#1b1b19}
+    .collection h3{font-size:23px;letter-spacing:-.035em;margin:45px 0 9px;max-width:260px}
+    .collection p{color:#77756e;line-height:1.55;font-size:13px;max-width:300px;margin:0}
+    .collection.dark p{color:#aaa9a3}
+    .collection .number{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.08em}
+    .collection .mini-list{position:absolute;right:22px;top:20px;display:flex;flex-direction:column;gap:7px}
+    .collection .mini{display:flex;align-items:center;gap:8px;background:#f4f3ef;border:1px solid #e7e5df;padding:8px 11px;border-radius:11px;font-size:12px;font-weight:750;box-shadow:0 5px 15px rgba(23,23,21,.04)}
+    .collection.dark .mini{background:#2b2b28;border-color:#3a3a36;color:#e9e8e2}
+    .about{margin-top:66px;display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;padding:48px 0;border-top:1px solid var(--line)}
+    .about h2{font-size:35px;letter-spacing:-.045em;line-height:1.12;margin:0}
+    .about-copy{display:grid;grid-template-columns:1fr 1fr;gap:35px}
+    .about-copy h3{font-size:15px;margin:0 0 8px}
+    .about-copy p{font-size:13px;line-height:1.65;color:#74726c;margin:0}
+    footer{border-top:1px solid var(--line);padding:30px 0 42px;color:#77756e;font-size:12px}
+    .footer-inner{display:flex;justify-content:space-between;gap:30px;align-items:flex-start}
+    .footer-links{display:flex;gap:17px;flex-wrap:wrap}
+    .footer-links a:hover{color:var(--ink)}
+    .footer-note{max-width:620px;line-height:1.6;text-align:right}
+    .mobile-menu{display:none}
+    @media (max-width:1050px){.hero-grid{grid-template-columns:1fr}.api-card{min-height:390px}.orbit{width:430px}.tools-grid{grid-template-columns:repeat(3,1fr)}.collection-grid{grid-template-columns:1fr 1fr}.collection:first-child{grid-column:1/-1}.about{grid-template-columns:1fr;gap:25px}}
+    @media (max-width:760px){.shell{width:min(calc(100% - 24px),var(--max))}.site-header{position:relative}.nav{height:64px}.nav-links{display:none}.brand small{display:none}.nav-action{padding:9px 12px}.hero{padding-top:20px}.hero-copy{min-height:auto;padding:28px 22px;border-radius:24px}h1{font-size:45px;margin-top:18px}.lead{font-size:15px}.search{height:58px;padding-left:49px;padding-right:18px}.shortcut{display:none}.search-icon{top:18px}.api-card{min-height:380px;padding:25px;border-radius:24px}.orbit{right:-60px;top:58px;width:390px;opacity:.8}.api-copy h2{font-size:29px}.trust{align-items:flex-start;flex-direction:column;gap:11px}.content{padding-top:18px}.category-bar{top:0}.tools-grid{grid-template-columns:1fr 1fr}.section-head{align-items:flex-start;flex-direction:column;gap:8px}.collection-grid{grid-template-columns:1fr}.collection:first-child{grid-column:auto}.about-copy{grid-template-columns:1fr}.footer-inner{flex-direction:column}.footer-note{text-align:left}}
+    @media (max-width:520px){.tools-grid{grid-template-columns:1fr}.tool-card{min-height:170px}h1{font-size:40px}.hero-copy{padding:25px 19px}.api-card{min-height:360px}.orbit{width:330px;right:-78px}.collection .mini-list{opacity:.38}.about h2{font-size:30px}.nav-action span{display:none}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+  </style>
+  <style>
+    :root{--ink:#0b1020;--muted:#64708b;--line:rgba(25,38,76,.11);--paper:#f4f7ff;--card:rgba(255,255,255,.82);--card-solid:#fff;--accent:#6d4aff;--accent-2:#3f7cff;--cyan:#00bcd4;--glow:rgba(109,74,255,.18);--shadow:0 20px 60px rgba(42,52,95,.12);--radius:22px;--max:1460px}
+    html[data-theme="dark"]{--ink:#f3f5ff;--muted:#9ba6c0;--line:rgba(181,194,255,.12);--paper:#080b14;--card:rgba(19,24,42,.78);--card-solid:#121728;--accent:#9a7cff;--accent-2:#62a4ff;--cyan:#31d8e5;--glow:rgba(120,91,255,.24);--shadow:0 24px 70px rgba(0,0,0,.34);color-scheme:dark}
+    body{background:radial-gradient(circle at 15% -10%,rgba(76,141,255,.16),transparent 33%),radial-gradient(circle at 92% 8%,rgba(152,87,255,.14),transparent 30%),var(--paper);min-height:100vh;transition:background .3s ease,color .3s ease}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.3;background-image:linear-gradient(rgba(91,105,158,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(91,105,158,.06) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#000,transparent 68%)}
+    .site-header{background:color-mix(in srgb,var(--paper) 78%,transparent);border-color:var(--line);backdrop-filter:blur(22px) saturate(140%)}
+    .nav{height:74px}.brand{font-size:20px}.brand-mark{background:linear-gradient(145deg,#815bff,#316dff 58%,#15c8dc);box-shadow:0 10px 28px rgba(80,79,255,.28)}
+    .brand-mark:after{background:#fff;box-shadow:12px -7px 0 -1px #8debf4}.brand small{color:var(--muted)}.nav-links{color:var(--muted)}
+    .theme-toggle{width:42px;height:42px;border-radius:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 24px rgba(50,62,100,.07);transition:.2s ease}
+    .theme-toggle:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}.theme-toggle .sun{display:none}html[data-theme="dark"] .theme-toggle .sun{display:inline}html[data-theme="dark"] .theme-toggle .moon{display:none}
+    .nav-action{color:#fff;border:0;background:linear-gradient(110deg,#7655ff,#356dff 58%,#18b9d2);box-shadow:0 10px 28px rgba(73,91,255,.24)}.nav-action:hover{box-shadow:0 14px 34px rgba(73,91,255,.32)}.nav-action i{background:#c9ff73;box-shadow:0 0 0 4px rgba(201,255,115,.18)}
+    .hero{padding:34px 0 22px}.hero-grid{grid-template-columns:minmax(0,1.22fr) minmax(390px,.78fr);gap:16px}
+    .hero-copy,.api-card{min-height:390px;border-radius:28px}
+    .hero-copy{padding:42px 46px;background:linear-gradient(135deg,color-mix(in srgb,var(--card-solid) 92%,#ddebff) 0%,color-mix(in srgb,var(--card-solid) 87%,#f3eaff) 100%);border-color:var(--line);box-shadow:var(--shadow)}
+    html[data-theme="dark"] .hero-copy{background:linear-gradient(135deg,rgba(23,30,55,.96),rgba(24,20,49,.93))}
+    .hero-copy:before{content:"";position:absolute;width:310px;height:310px;right:-70px;top:-100px;border-radius:50%;background:radial-gradient(circle,rgba(69,205,255,.23),transparent 67%);filter:blur(4px)}
+    .eyebrow{color:var(--accent);font-size:12px}.eyebrow:before{background:linear-gradient(90deg,var(--accent),var(--cyan))}
+    h1{max-width:840px;margin:20px 0 15px;font-size:clamp(46px,5.2vw,76px);line-height:1.01}h1 span{background:linear-gradient(100deg,var(--accent),var(--accent-2) 50%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{color:var(--muted);font-size:16px;max-width:760px}.search-wrap{max-width:790px;margin-top:25px}.search{height:64px;border-color:var(--line);background:color-mix(in srgb,var(--card-solid) 90%,transparent);color:var(--ink);box-shadow:0 14px 38px rgba(41,53,103,.11)}.search:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--glow),0 18px 44px rgba(41,53,103,.12)}.shortcut{background:color-mix(in srgb,var(--paper) 76%,transparent);border-color:var(--line);color:var(--muted)}.shortcut kbd{background:var(--card-solid);border-color:var(--line)}.hotline{color:var(--muted)}.hotline button{color:var(--muted)}.hotline button:hover{color:var(--accent)}
+    .hero-stats{display:flex;gap:22px;margin-top:19px}.hero-stats span{font-size:12px;color:var(--muted)}.hero-stats b{font-size:17px;color:var(--ink);margin-right:5px}
+    .api-card{padding:31px;background:linear-gradient(145deg,#11142b 0%,#29205a 48%,#123f59 100%);border-color:rgba(255,255,255,.1);box-shadow:0 26px 72px rgba(24,25,62,.3)}.api-card:before{background:radial-gradient(circle at 58% 42%,rgba(137,91,255,.38),transparent 35%),radial-gradient(circle at 82% 25%,rgba(29,202,226,.24),transparent 27%)}.api-badge{color:#c6b8ff}.sponsored{color:#aab6d1;border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.05)}.orbit{opacity:.95;mix-blend-mode:screen}.api-copy h2{font-size:35px}.api-copy h2 span{color:#8fe8ff}.api-copy p{color:#b7c2d7}.btn-primary{background:linear-gradient(100deg,#fff,#dff9ff);color:#11162a}.btn-ghost{border-color:rgba(255,255,255,.22);color:#d9e0f0}
+    .trust{padding:17px 4px 0;color:var(--muted)}.trust strong{color:var(--ink)}.trust-list span:before{background:linear-gradient(145deg,var(--accent),var(--accent-2));color:#fff}
+    .content{padding:26px 0 84px}.directory-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:20px;align-items:start}.category-panel{position:sticky;top:92px;border:1px solid var(--line);border-radius:22px;padding:13px;background:var(--card);box-shadow:0 14px 42px rgba(42,52,95,.08);backdrop-filter:blur(18px)}.category-title{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:9px 10px 10px}.category-bar{position:static;display:flex;flex-direction:column;gap:4px;overflow:visible;padding:0;margin:0;background:none}.chip{width:100%;border:0;background:transparent;border-radius:12px;padding:11px 12px;justify-content:flex-start;color:var(--muted);font-size:14px}.chip:hover{background:color-mix(in srgb,var(--accent) 8%,transparent);border-color:transparent}.chip.active{background:linear-gradient(110deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 9px 24px rgba(80,79,255,.22)}.chip b{margin-left:auto}.side-promo{display:block;margin-top:11px;padding:16px;border-radius:16px;background:linear-gradient(145deg,#171a34,#30266a);color:#fff}.side-promo small{display:block;color:#9fcff6;margin-bottom:6px}.side-promo strong{font-size:15px;line-height:1.35}.side-promo span{display:block;color:#b9c3dc;font-size:12px;margin-top:9px}.directory-main{min-width:0}.section-head{margin:4px 2px 17px}.section-head h2{font-size:34px}.section-head p,.result-count{color:var(--muted)}
+    .tools-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tool-card{min-height:180px;background:var(--card);border-color:var(--line);box-shadow:0 8px 28px rgba(42,52,95,.055);backdrop-filter:blur(14px)}.tool-card:before{content:"";position:absolute;left:18px;right:18px;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),var(--cyan),transparent);opacity:0;transition:.2s}.tool-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 30%,var(--line));box-shadow:0 18px 42px rgba(64,65,130,.14)}.tool-card:hover:before{opacity:.75}.tool-logo{border-color:var(--line);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}.tool-desc{color:var(--muted);font-size:13px}.fav{color:var(--muted)}.fav:hover{background:color-mix(in srgb,var(--accent) 9%,transparent);color:var(--accent)}.tag{background:color-mix(in srgb,var(--accent) 8%,var(--card-solid));color:var(--muted)}.tag.free{background:rgba(25,185,105,.12);color:#20a566}.visit{color:var(--ink)}
+    .collections{margin-top:54px}.collection-grid{grid-template-columns:1.15fr .925fr .925fr}.collection{min-height:240px;background:var(--card);border-color:var(--line);box-shadow:0 14px 40px rgba(42,52,95,.07)}.collection.dark{background:linear-gradient(145deg,#151831,#29205c 62%,#13516a);border-color:rgba(255,255,255,.08)}.collection p,.about-copy p{color:var(--muted)}.collection.dark p{color:#b5bed3}.collection .mini{background:color-mix(in srgb,var(--paper) 75%,var(--card-solid));border-color:var(--line)}.collection.dark .mini{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1)}.collection .number{color:var(--accent)}
+    .about{border-color:var(--line)}footer{border-color:var(--line)}.footer-note{color:var(--muted)}
+    .back-top{position:fixed;right:24px;bottom:24px;width:46px;height:46px;border:1px solid var(--line);border-radius:15px;background:var(--card);color:var(--ink);box-shadow:var(--shadow);backdrop-filter:blur(16px);cursor:pointer;z-index:60;opacity:0;transform:translateY(12px);pointer-events:none;transition:.22s ease;font-size:19px}.back-top.show{opacity:1;transform:none;pointer-events:auto}.back-top:hover{color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));border-color:transparent}
+    @media (min-width:1320px){.tools-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.tool-card{min-height:188px}}
+    @media (max-width:1050px){.hero-grid{grid-template-columns:1fr}.api-card{min-height:380px}.directory-layout{grid-template-columns:190px minmax(0,1fr)}.tools-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:760px){.nav{gap:10px}.theme-toggle{margin-left:auto}.nav-action{margin-left:0}.hero{padding-top:14px}.hero-copy{padding:30px 23px}.hero-copy,.api-card{border-radius:23px}.hero-stats{gap:12px;flex-wrap:wrap}.directory-layout{display:block}.category-panel{position:sticky;top:8px;z-index:35;padding:8px;margin-bottom:18px}.category-title,.side-promo{display:none}.category-bar{flex-direction:row;overflow:auto}.chip{width:auto;padding:10px 13px}.tools-grid{grid-template-columns:repeat(2,1fr)}.collection-grid{grid-template-columns:1fr}.back-top{right:14px;bottom:14px}}
+    @media (max-width:520px){.tools-grid{grid-template-columns:1fr}.hero-stats{display:none}.api-card{min-height:370px}.section-head h2{font-size:29px}.theme-toggle{width:39px;height:39px}.nav-action{font-size:0}.nav-action:after{content:"API";font-size:12px}}
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="/" aria-label="返回首页">
-        <span class="brand-mark">AI</span>
-        <span>AI 学习地图</span>
-      </a>
-
-      <nav class="nav-links" aria-label="主要导航">
-        <a href="#featured">精选教程</a>
-        <a href="#download">一键下载</a>
-        <a href="#resources">资源平台</a>
-        <a href="#roadmap">学习路线</a>
-        <a href="#community">付费社群</a>
-        <a href="#submit">提交资源</a>
-      </nav>
-
-      <a class="nav-action" href="#featured">开始学习</a>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="星图 AI 导航首页"><span class="brand-mark" aria-hidden="true"></span><span>星图 AI<small>STARMAP</small></span></a>
+      <nav class="nav-links" aria-label="主导航"><a href="#directory">工具导航</a><a href="#collections">效率方案</a><a href="#about">收录标准</a><a href="https://apinebula.ai/t1QTfq" target="_blank" rel="sponsored noopener">模型 API</a></nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="切换明暗主题" title="切换明暗主题"><span class="moon" aria-hidden="true">☾</span><span class="sun" aria-hidden="true">☀</span></button>
+      <a class="nav-action" href="https://apinebula.ai/t1QTfq" target="_blank" rel="sponsored noopener"><i aria-hidden="true"></i><span>APINEBULA</span> 开始使用 ↗</a>
     </div>
   </header>
 
   <main id="top">
     <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div>
-            <div class="eyebrow">持续整理优质免费学习资源</div>
-            <h1>把分散的 AI 教程，整理成一张<span class="gradient-text">清晰可学的地图</span></h1>
-            <p class="hero-copy">
-              汇集 B 站优质视频、开放课程、国家教育平台资源、工具实战与项目案例。无需在多个平台反复搜索，从入门到进阶，一站找到适合自己的学习内容。
-            </p>
-
-            <div class="search-wrap" role="search">
-              <input id="searchInput" type="search" placeholder="搜索：ChatGPT、提示词、Python、AI 绘画、智能体……" aria-label="搜索教程" />
-              <button id="searchBtn" type="button">搜索教程</button>
-            </div>
-
-            <div class="hero-tags">
-              <span>零基础入门</span>
-              <span>提示词工程</span>
-              <span>AI 办公</span>
-              <span>AI 编程</span>
-              <span>智能体</span>
-            </div>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">CURATED AI DIRECTORY · 2026</div>
+          <h1>把好用的 AI，<br><span>放进你的工作流</span></h1>
+          <p class="lead">按任务筛选对话、搜索、创作、编程与自动化工具。每个入口都指向官方站点，让你少做比较，更快开始。</p>
+          <div class="search-wrap">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input id="search" class="search" type="search" autocomplete="off" placeholder="搜索工具、场景或关键词…" aria-label="搜索 AI 工具">
+            <span class="shortcut"><kbd>/</kbd> 快速搜索</span>
           </div>
-
-          <div class="hero-panel" aria-label="教程内容预览">
-            <div class="panel-content">
-              <div class="window-bar">
-                <div class="dots"><span></span><span></span><span></span></div>
-                <div class="panel-badge">今日推荐 · 免费学习</div>
-              </div>
-              <div class="panel-title">从第一条提示词，到完成一个 AI 项目</div>
-              <div class="course-stack">
-                <a class="mini-course" href="#featured">
-                  <div class="mini-icon">01</div>
-                  <div><strong>AI 基础认知</strong><small>理解模型、能力边界与应用场景</small></div>
-                  <span class="mini-arrow">→</span>
-                </a>
-                <a class="mini-course" href="#featured">
-                  <div class="mini-icon">02</div>
-                  <div><strong>提示词实战</strong><small>建立可复用的提问与工作流模板</small></div>
-                  <span class="mini-arrow">→</span>
-                </a>
-                <a class="mini-course" href="#roadmap">
-                  <div class="mini-icon">03</div>
-                  <div><strong>项目落地</strong><small>从工具使用进阶到自动化与智能体</small></div>
-                  <span class="mini-arrow">→</span>
-                </a>
-              </div>
-            </div>
-          </div>
+          <div class="hotline"><span>快速查找：</span><button data-query="写作">AI 写作</button><button data-query="编程">编程助手</button><button data-query="视频">视频生成</button><button data-query="免费">免费工具</button></div>
+          <div class="hero-stats" aria-label="导航站数据"><span><b>87</b>精选工具</span><span><b>11</b>实用分类</span><span><b>100%</b>官方入口</span></div>
         </div>
 
-        <div class="stats">
-          <div class="stat"><strong>120+</strong><span>精选教程</span></div>
-          <div class="stat"><strong>18</strong><span>内容分类</span></div>
-          <div class="stat"><strong>8</strong><span>资源平台</span></div>
-          <div class="stat"><strong>每周</strong><span>持续更新</span></div>
-        </div>
+        <aside class="api-card" aria-label="APINEBULA 推荐">
+          <div class="api-top"><span class="api-badge">本站主力推荐</span><span class="sponsored">开发者入口</span></div>
+          <img class="orbit" src="assets/api-orbit.webp" width="900" height="778" alt="多模型 API 汇聚的抽象轨道视觉" fetchpriority="high">
+          <div class="api-copy">
+            <h2>一个 API，连接<br><span>更多模型能力</span></h2>
+            <p>用统一接口接入主流模型，简化账号、计费与模型切换。适合开发 AI 产品、自动化流程和个人项目。</p>
+            <div class="api-actions"><a class="btn btn-primary" href="https://apinebula.ai/t1QTfq" target="_blank" rel="sponsored noopener">领取专属入口 <span>↗</span></a><a class="btn btn-ghost" href="https://apinebula.ai/t1QTfq" target="_blank" rel="sponsored noopener">浏览模型服务</a></div>
+          </div>
+        </aside>
       </div>
+      <div class="shell trust"><strong>为什么值得收藏</strong><div class="trust-list"><span>按真实任务分类</span><span>直达官方入口</span><span>中外工具兼顾</span><span>无需注册即可浏览</span></div></div>
     </section>
 
-    <section id="featured">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>精选教程</h2>
-            <p>按学习目标分类整理，既有图片卡片，也有可直接访问的文字链接，便于快速浏览和持续扩充。</p>
-          </div>
-          <a class="text-link" href="#resources">查看全部资源 →</a>
+    <section id="directory" class="content">
+      <div class="shell">
+        <div class="directory-layout">
+          <aside class="category-panel" aria-label="工具分类导航"><div class="category-title">按场景浏览</div><div id="categories" class="category-bar" role="tablist" aria-label="工具分类"></div><a class="side-promo" href="https://apinebula.ai/t1QTfq" target="_blank" rel="sponsored noopener"><small>DEVELOPER PICK</small><strong>用 APINEBULA<br>接入多模型 API</strong><span>查看专属通道 ↗</span></a></aside>
+          <div class="directory-main"><div class="section-head"><div><h2>精选 AI 工具库</h2><p>不是堆链接，而是为常见任务保留值得尝试的选择。</p></div><div id="resultCount" class="result-count" aria-live="polite"></div></div><div id="tools" class="tools-grid"></div></div>
         </div>
 
-        <div class="filter-row" aria-label="教程筛选">
-          <button class="filter-btn active" data-filter="all">全部</button>
-          <button class="filter-btn" data-filter="basic">基础入门</button>
-          <button class="filter-btn" data-filter="office">AI 办公</button>
-          <button class="filter-btn" data-filter="coding">AI 编程</button>
-          <button class="filter-btn" data-filter="creative">AI 创作</button>
-          <button class="filter-btn" data-filter="agent">智能体</button>
-        </div>
-
-        <div class="course-grid" id="courseGrid">
-          <a class="course-card" data-category="basic" data-title="生成式 AI 零基础入门 ChatGPT 大模型" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer">
-            <div class="course-cover cover-a">
-              <div class="cover-top"><span class="source-tag">B 站视频</span><span class="level-tag">入门</span></div>
-              <div class="cover-main"><strong>生成式 AI 零基础入门</strong><span>从概念到第一次高质量对话</span></div>
-            </div>
-            <div class="course-body">
-              <h3>生成式 AI 零基础入门课程</h3>
-              <p>适合第一次接触大模型的学习者，覆盖模型基础、常见工具、使用边界和典型应用。</p>
-              <div class="course-meta"><span>约 2 小时 · 免费</span><span class="course-enter">↗</span></div>
-            </div>
-          </a>
-
-          <a class="course-card" data-category="office" data-title="AI 办公自动化 文档 表格 PPT" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer">
-            <div class="course-cover cover-b">
-              <div class="cover-top"><span class="source-tag">开放教程</span><span class="level-tag">实战</span></div>
-              <div class="cover-main"><strong>AI 办公自动化</strong><span>文档、表格、PPT 与资料整理</span></div>
-            </div>
-            <div class="course-body">
-              <h3>高频办公场景实战指南</h3>
-              <p>围绕总结、改写、数据分析、会议纪要和演示文稿，快速搭建个人办公工作流。</p>
-              <div class="course-meta"><span>12 节 · 可跟练</span><span class="course-enter">↗</span></div>
-            </div>
-          </a>
-
-          <a class="course-card" data-category="creative" data-title="AI 绘画 视频创作 图像提示词" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer">
-            <div class="course-cover cover-c">
-              <div class="cover-top"><span class="source-tag">视频课程</span><span class="level-tag">创作</span></div>
-              <div class="cover-main"><strong>AI 图像与视频创作</strong><span>从提示词到完整作品</span></div>
-            </div>
-            <div class="course-body">
-              <h3>AI 视觉创作快速上手</h3>
-              <p>学习画面拆解、风格控制、镜头设计和作品迭代，适合自媒体与视觉内容创作者。</p>
-              <div class="course-meta"><span>8 个案例 · 免费</span><span class="course-enter">↗</span></div>
-            </div>
-          </a>
-
-          <a class="course-card" data-category="coding" data-title="Python AI 编程 辅助开发 零基础" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer">
-            <div class="course-cover cover-d">
-              <div class="cover-top"><span class="source-tag">高校公开课</span><span class="level-tag">进阶</span></div>
-              <div class="cover-main"><strong>AI 辅助编程</strong><span>从需求描述到完成小工具</span></div>
-            </div>
-            <div class="course-body">
-              <h3>零基础做出第一个 AI 小工具</h3>
-              <p>学习如何让 AI 帮你拆解需求、生成代码、修复错误，并最终完成一个可运行项目。</p>
-              <div class="course-meta"><span>项目制 · 6 章节</span><span class="course-enter">↗</span></div>
-            </div>
-          </a>
-
-          <a class="course-card" data-category="agent" data-title="智能体 Agent 工作流 自动化 知识库" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer">
-            <div class="course-cover cover-e">
-              <div class="cover-top"><span class="source-tag">平台教程</span><span class="level-tag">进阶</span></div>
-              <div class="cover-main"><strong>智能体与自动化工作流</strong><span>知识库、插件与任务编排</span></div>
-            </div>
-            <div class="course-body">
-              <h3>搭建可执行任务的 AI 智能体</h3>
-              <p>从单轮问答升级到多步骤任务执行，了解智能体、知识库与自动化流程的基本组合。</p>
-              <div class="course-meta"><span>10 节 · 含案例</span><span class="course-enter">↗</span></div>
-            </div>
-          </a>
-
-          <a class="course-card" data-category="basic" data-title="国家教育平台 人工智能 通识 免费课程" href="https://www.smartedu.cn/" target="_blank" rel="noopener noreferrer">
-            <div class="course-cover cover-f">
-              <div class="cover-top"><span class="source-tag">国家平台</span><span class="level-tag">通识</span></div>
-              <div class="cover-main"><strong>人工智能通识课程</strong><span>系统理解 AI 的基础知识</span></div>
-            </div>
-            <div class="course-body">
-              <h3>国家教育平台免费 AI 课程</h3>
-              <p>适合希望系统学习基础理论、发展历程和社会影响的学生、教师及普通学习者。</p>
-              <div class="course-meta"><span>官方资源 · 免费</span><span class="course-enter">↗</span></div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="link-directory-section" aria-labelledby="moreTutorialsTitle">
-      <div class="container">
-        <div class="link-directory-box" data-link-directory>
-          <div class="link-directory-head">
-            <div>
-              <h2 id="moreTutorialsTitle">更多 AI 教程</h2>
-              <p>以轻量文字链接收录更多优质内容，适合快速查找和持续扩充。</p>
-            </div>
-            <button class="link-toggle-btn" type="button" aria-expanded="false" data-link-toggle>
-              <span data-toggle-label>展开全部</span>
-              <svg class="link-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+        <section id="collections" class="collections">
+          <div class="section-head"><div><h2>从任务出发，不从工具出发</h2><p>三条高频工作流，帮你更快组合出自己的 AI 工具箱。</p></div></div>
+          <div class="collection-grid">
+            <article class="collection dark"><span class="number">WORKFLOW 01</span><h3>从想法到可用产品</h3><p>先验证需求，再完成界面与代码，最后通过统一 API 接入合适的模型。</p><div class="mini-list"><span class="mini">Perplexity</span><span class="mini">Figma Make</span><span class="mini">Cursor</span><span class="mini">APINEBULA</span></div></article>
+            <article class="collection"><span class="number">WORKFLOW 02</span><h3>内容创作流水线</h3><p>选题、脚本、画面、配音与剪辑，一套顺畅闭环。</p><div class="mini-list"><span class="mini">Claude</span><span class="mini">Midjourney</span><span class="mini">剪映</span></div></article>
+            <article class="collection"><span class="number">WORKFLOW 03</span><h3>研究与知识管理</h3><p>搜索事实、整理材料、核对论文，并保留可追溯来源。</p><div class="mini-list"><span class="mini">NotebookLM</span><span class="mini">Elicit</span><span class="mini">Consensus</span></div></article>
           </div>
+        </section>
 
-          <div class="text-link-grid" data-link-grid>
-            <!-- 后续新增文字教程时，复制任意一行 a 标签并替换标题与 href 即可 -->
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>ChatGPT 零基础完整入门教程</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>DeepSeek 高效提问与实战技巧</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>Claude 长文写作与资料分析指南</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>AI 提示词工程系统学习路线</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>AI 办公自动化：Word 与 Excel</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>使用 AI 快速制作高质量 PPT</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>零基础入门 AI 辅助编程</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>Cursor 从安装到项目实战</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>Python 与大模型 API 入门</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>Midjourney 图像创作基础课程</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>即梦 AI 图片与视频创作教程</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>AI 短视频脚本与分镜生成方法</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>Coze 智能体零基础搭建教程</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>Dify 知识库与工作流实战</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>个人知识库 RAG 基础教程</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>AI 自媒体内容生产工作流</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>AI 搜索与深度研究方法</span></a>
-            <a class="compact-text-link" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer"><span>普通人学习 AI 的常见误区</span></a>
-          </div>
-          <div class="link-directory-status" data-link-status aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    
-
-    <section class="download-section" id="download">
-      <div class="container">
-        <div class="download-box">
-          <div class="download-copy">
-            <span class="download-kicker">精选资料 · 网盘直达</span>
-            <h2>优质教程合集，一键下载观看</h2>
-            <p>将分散的课程、资料和项目案例整理为可保存的学习包，点击按钮后可选择百度网盘或夸克网盘。</p>
-          </div>
-          <div class="download-actions">
-            <button class="download-trigger" id="openDownloadModal" type="button">一键下载合集</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="resources">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>资源平台导航</h2>
-            <p>通过文字链接快速访问重点平台，也可以在后期继续增加分类、标签、收藏与提交审核功能。</p>
-          </div>
-        </div>
-
-        <div class="resource-layout">
-          <div class="resource-panel">
-            <h3>优质视频与开放课程</h3>
-            <div class="resource-list">
-              <a class="resource-item" href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer">
-                <span class="resource-icon">B</span><span><strong>B 站 AI 优质教程</strong><small>适合跟练、案例丰富、更新速度快</small></span><span class="resource-arrow">→</span>
-              </a>
-              <a class="resource-item" href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">
-                <span class="resource-icon">慕</span><span><strong>中国大学 MOOC</strong><small>高校课程体系完整，适合系统学习</small></span><span class="resource-arrow">→</span>
-              </a>
-              <a class="resource-item" href="https://www.xuetangx.com/" target="_blank" rel="noopener noreferrer">
-                <span class="resource-icon">学</span><span><strong>学堂在线</strong><small>覆盖人工智能、编程与数据科学</small></span><span class="resource-arrow">→</span>
-              </a>
-              <a class="resource-item" href="https://www.smartedu.cn/" target="_blank" rel="noopener noreferrer">
-                <span class="resource-icon">国</span><span><strong>国家智慧教育平台</strong><small>官方免费资源，适合通识与基础教育</small></span><span class="resource-arrow">→</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="resource-panel">
-            <h3>实用工具与专题入口</h3>
-            <div class="resource-list">
-              <a class="resource-item" href="#featured">
-                <span class="resource-icon">提</span><span><strong>提示词模板库</strong><small>写作、办公、运营、编程常用模板</small></span><span class="resource-arrow">→</span>
-              </a>
-              <a class="resource-item" href="#featured">
-                <span class="resource-icon">码</span><span><strong>AI 编程学习区</strong><small>从零基础到完整项目的学习路径</small></span><span class="resource-arrow">→</span>
-              </a>
-              <a class="resource-item" href="#roadmap">
-                <span class="resource-icon">图</span><span><strong>AI 学习路线图</strong><small>按照目标选择课程，减少无效搜索</small></span><span class="resource-arrow">→</span>
-              </a>
-              <a class="resource-item" href="#submit">
-                <span class="resource-icon">+</span><span><strong>提交优质资源</strong><small>支持用户推荐新教程和学习平台</small></span><span class="resource-arrow">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="roadmap" id="roadmap">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>推荐学习路线</h2>
-            <p>不追求一次学完所有工具，先建立基础认知，再通过真实任务逐步进阶。</p>
-          </div>
-          <a class="text-link" href="#featured">进入课程区 →</a>
-        </div>
-
-        <div class="roadmap-grid">
-          <div class="step-card"><div class="step-no">01</div><h3>建立基础认知</h3><p>理解生成式 AI、模型能力、信息判断与常见使用误区。</p></div>
-          <div class="step-card"><div class="step-no">02</div><h3>掌握提示词方法</h3><p>学习拆解目标、提供上下文、约束格式和持续迭代。</p></div>
-          <div class="step-card"><div class="step-no">03</div><h3>进入真实场景</h3><p>从办公、创作或编程中选择一个方向进行高频练习。</p></div>
-          <div class="step-card"><div class="step-no">04</div><h3>完成项目闭环</h3><p>制作可展示成果，并逐步加入知识库、自动化和智能体。</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="community-section" id="community">
-      <div class="container">
-        <div class="community-card">
-          <div class="community-copy">
-            <span class="community-badge">从学习走向行动</span>
-            <h2>AI 付费社群</h2>
-            <p>适合希望持续获取 AI 前沿资讯、参与实战行动并认识同频伙伴的学习者与创业者。通过稳定的信息筛选和真实交流，减少无效试错。</p>
-
-            <div class="community-points">
-              <div class="community-point"><strong>前沿资讯</strong><span>持续整理值得关注的 AI 产品、趋势与机会。</span></div>
-              <div class="community-point"><strong>实战行动营</strong><span>围绕内容、工具、项目和商业化进行阶段性训练。</span></div>
-              <div class="community-point"><strong>线下聚会</strong><span>链接同频伙伴，交流项目经验与真实执行反馈。</span></div>
-            </div>
-
-            <div class="community-actions">
-              <!-- 将下面链接替换为你的知识星球真实链接 -->
-              <a class="btn btn-primary" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer">进入知识星球</a>
-              <a class="btn btn-secondary" href="#communityQr">扫码领取三天体验卡</a>
-            </div>
-          </div>
-
-          <div class="community-visual" id="communityQr">
-            <!-- 可将此占位区域替换为真实二维码图片：<img src="你的二维码图片地址" alt="AI 付费社群三天体验卡二维码"> -->
-            <div class="qr-placeholder"><span>替换为二维码</span></div>
-            <strong>扫码领取三天体验卡</strong>
-            <small>无需复杂流程，先体验再决定</small>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="link-directory-section community-links-section" aria-labelledby="communityResourcesTitle">
-      <div class="container">
-        <div class="link-directory-box" data-link-directory>
-          <div class="link-directory-head">
-            <div>
-              <h2 id="communityResourcesTitle">社群文章与实战资源</h2>
-              <p>整理社群内值得反复阅读的文章、项目复盘、行动指南和实用资料。</p>
-            </div>
-            <button class="link-toggle-btn" type="button" aria-expanded="false" data-link-toggle>
-              <span data-toggle-label>展开全部</span>
-              <svg class="link-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
-
-          <div class="text-link-grid" data-link-grid>
-            <!-- 将以下示例链接替换为知识星球文章、公众号文章或你的资源页面 -->
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>AI 时代个人创业的机会地图</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>从零开始搭建个人 AI 工作流</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>AI 内容项目的选题与验证方法</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>普通人可执行的 AI 变现路径</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>行动营第一周任务与复盘模板</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>AI 工具筛选与付费决策清单</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>个人品牌内容生产完整流程</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>低成本验证 AI 项目的方法</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>AI 产品推广与转化案例拆解</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>线下聚会精华观点整理</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>社群成员项目进展周报</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>一人公司效率工具箱</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>AI 创业常见风险与避坑指南</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>从学习到交付的项目闭环</span></a>
-            <a class="compact-text-link" href="https://wx.zsxq.com/" target="_blank" rel="noopener noreferrer"><span>社群精选问答与经验汇总</span></a>
-          </div>
-          <div class="link-directory-status" data-link-status aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="newsletter" id="submit">
-      <div class="container">
-        <div class="newsletter-box">
-          <div>
-            <h2>发现了值得推荐的 AI 教程？</h2>
-            <p>后续可接入表单、后台审核、收藏、评分和更新提醒，让网站真正成为可持续维护的教程平台。</p>
-          </div>
-          <div class="newsletter-actions">
-            <a class="btn btn-primary" href="mailto:hello@example.com">提交资源</a>
-            <a class="btn btn-secondary" href="#top">返回顶部</a>
-          </div>
-        </div>
+        <section id="about" class="about">
+          <h2>有选择标准，<br>才不只是链接仓库。</h2>
+          <div class="about-copy"><div><h3>收录原则</h3><p>优先官方产品、稳定服务和能解决明确问题的工具；不以“数量最多”为目标，不收录换壳、诱导下载或信息不透明的站点。</p></div><div><h3>链接说明</h3><p>工具卡片直达公开官网。产品能力、免费额度与地区可用性会随时变化，重要决策请以对应产品的最新说明为准。</p></div><div><h3>推广说明</h3><p>APINEBULA 是本站重点推荐的 API 聚合平台，相关按钮使用专属推广链接。推荐关系不影响其他工具的分类与评价。</p></div><div><h3>隐私友好</h3><p>搜索、筛选、主题偏好与收藏均保存在当前浏览器，不上传个人数据；访问第三方网站时请留意其隐私政策。</p></div></div>
+        </section>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <div class="footer-links" aria-label="友情链接">
-        <!-- 请将以下示例链接替换为你的真实友情链接 -->
-        <a href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer">优质视频学习</a>
-        <a href="https://www.smartedu.cn/" target="_blank" rel="noopener noreferrer">国家智慧教育平台</a>
-        <a href="https://www.icourse163.org/" target="_blank" rel="noopener noreferrer">中国大学 MOOC</a>
-        <a href="https://www.xuetangx.com/" target="_blank" rel="noopener noreferrer">学堂在线</a>
-        <a href="#roadmap">个人成长路线</a>
-      </div>
-      <div class="footer-row">
-        <span>© 2026 AI 学习地图 · 优质教程导航</span>
-        <span>本站仅作学习资源整理，课程版权归原平台与作者所有</span>
-      </div>
-    </div>
+    <div class="shell footer-inner"><div><div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>星图 AI</span></div><div class="footer-links" style="margin-top:16px"><a href="#directory">工具导航</a><a href="https://apinebula.ai/t1QTfq" target="_blank" rel="sponsored noopener">APINEBULA</a><a href="https://apinebula.ai/t1QTfq" target="_blank" rel="sponsored noopener">模型 API</a></div></div><p class="footer-note">最后整理：2026 年 9 月。本站独立筛选并整理公开 AI 产品，不代表所收录产品官方立场；功能、价格与可用地区请以产品官网为准。</p></div>
   </footer>
-
-
-  <button class="back-to-top" id="backToTop" type="button" aria-label="回到页面顶部" title="回到顶部">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m5 14 7-7 7 7"></path>
-      <path d="M12 7v11"></path>
-    </svg>
-  </button>
-
-  <div class="modal" id="downloadModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="downloadModalTitle">
-    <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-dialog">
-      <button class="modal-close" type="button" aria-label="关闭弹窗" data-close-modal>×</button>
-      <h3 id="downloadModalTitle">选择下载方式</h3>
-      <p>请选择常用网盘打开教程合集。以下链接为示例，请在代码中替换成你的真实分享链接。</p>
-      <div class="cloud-options">
-        <!-- 替换 href 为百度网盘真实分享链接 -->
-        <a class="cloud-option" href="https://pan.baidu.com/" target="_blank" rel="noopener noreferrer">
-          <span class="cloud-icon baidu">百</span>
-          <span><strong>百度网盘</strong><small>适合使用百度网盘客户端的用户</small></span>
-          <span class="cloud-arrow">↗</span>
-        </a>
-        <!-- 替换 href 为夸克网盘真实分享链接 -->
-        <a class="cloud-option" href="https://pan.quark.cn/" target="_blank" rel="noopener noreferrer">
-          <span class="cloud-icon quark">夸</span>
-          <span><strong>夸克网盘</strong><small>适合手机端快速保存与观看</small></span>
-          <span class="cloud-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-  </div>
+  <button id="backTop" class="back-top" type="button" aria-label="回到页面顶部" title="回到顶部">↑</button>
 
   <script>
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.course-card');
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
+  (()=>{
+    const categories=[
+      {id:'all',name:'全部',icon:'✦'}, {id:'chat',name:'对话助手',icon:'◌'}, {id:'search',name:'智能搜索',icon:'⌕'},
+      {id:'write',name:'写作内容',icon:'✎'}, {id:'image',name:'图像设计',icon:'◇'}, {id:'video',name:'视频创作',icon:'▷'},
+      {id:'code',name:'编程开发',icon:'⌘'}, {id:'office',name:'办公演示',icon:'▦'}, {id:'research',name:'学习研究',icon:'◎'},
+      {id:'audio',name:'音频语音',icon:'≋'}, {id:'agent',name:'智能体自动化',icon:'⬡'}, {id:'api',name:'模型与 API',icon:'↝'},
+      {id:'fav',name:'我的收藏',icon:'☆'}
+    ];
+    const T=(name,short,category,desc,url,tags=[],badge='')=>({name,short,category,desc,url,tags,badge});
+    const tools=[
+      T('ChatGPT','GPT','chat','通用型 AI 助手，适合写作、分析、图像、学习与复杂任务。','https://chatgpt.com/',['通用','多模态','免费'],'热门'),
+      T('Claude','CL','chat','擅长长文本、严谨写作、推理与代码协作的 AI 助手。','https://claude.ai/',['长文本','写作','免费'],'编辑精选'),
+      T('Gemini','GE','chat','Google 多模态助手，可联动搜索、文档与 Workspace。','https://gemini.google.com/',['Google','多模态','免费']),
+      T('DeepSeek','DS','chat','国产推理与代码模型助手，中文表现突出。','https://chat.deepseek.com/',['国产','推理','免费'],'热门'),
+      T('Kimi','KM','chat','擅长长文档、搜索和中文办公场景的智能助手。','https://www.kimi.com/',['国产','长文本','免费']),
+      T('通义千问','QW','chat','阿里旗下 AI 助手，覆盖对话、创作、视觉与办公。','https://www.qianwen.com/',['国产','多模态','免费']),
+      T('豆包','DB','chat','字节跳动旗下大众化 AI 助手，支持对话、创作与语音。','https://www.doubao.com/',['国产','语音','免费']),
+      T('腾讯元宝','YB','chat','腾讯旗下 AI 助手，适合微信生态、文档与深度搜索。','https://yuanbao.tencent.com/',['国产','搜索','免费']),
+      T('Grok','GK','chat','xAI 的实时信息与推理助手，连接 X 平台内容。','https://grok.com/',['实时','推理','免费']),
+      T('Le Chat','MI','chat','Mistral AI 的多语言助手，强调速度与企业可控性。','https://chat.mistral.ai/',['多语言','快速','免费']),
+      T('Poe','PO','chat','在同一界面使用多家模型与社区机器人。','https://poe.com/',['多模型','机器人','免费']),
+      T('智谱清言','ZP','chat','智谱 AI 推出的中文大模型助手与智能体入口。','https://chatglm.cn/',['国产','智能体','免费']),
 
-    function applyFilter(category = 'all', keyword = '') {
-      const normalizedKeyword = keyword.trim().toLowerCase();
+      T('Perplexity','PX','search','带来源引用的 AI 搜索与深度研究工具。','https://www.perplexity.ai/',['搜索','引用','免费'],'热门'),
+      T('Genspark','GS','search','用 AI 智能体完成搜索、整理与交付型任务。','https://www.genspark.ai/',['智能体','研究','免费']),
+      T('Felo','FE','search','支持多语言检索、知识图谱与演示生成的 AI 搜索。','https://felo.ai/',['多语言','演示','免费']),
+      T('秘塔 AI 搜索','MT','search','中文无广告 AI 搜索，支持研究模式与来源追踪。','https://metaso.cn/',['国产','搜索','免费']),
+      T('Devv','DV','search','面向开发者的 AI 搜索引擎，聚焦技术问题。','https://devv.ai/',['开发者','搜索','免费']),
+      T('Phind','PH','search','为程序员优化的答案引擎，擅长代码与技术检索。','https://www.phind.com/',['编程','搜索','免费']),
 
-      cards.forEach(card => {
-        const matchCategory = category === 'all' || card.dataset.category === category;
-        const searchableText = `${card.dataset.title} ${card.innerText}`.toLowerCase();
-        const matchKeyword = !normalizedKeyword || searchableText.includes(normalizedKeyword);
-        card.classList.toggle('hidden', !(matchCategory && matchKeyword));
-      });
+      T('Notion AI','NO','write','在文档和知识库中完成写作、总结、问答与整理。','https://www.notion.com/product/ai',['知识库','写作']),
+      T('Grammarly','GR','write','英语写作润色、改写、语气与语法检查。','https://www.grammarly.com/',['英文','润色','免费']),
+      T('Jasper','JA','write','面向品牌与营销团队的 AI 内容创作平台。','https://www.jasper.ai/',['营销','品牌']),
+      T('Copy.ai','CO','write','销售与营销文案、工作流和内容自动化。','https://www.copy.ai/',['营销','工作流']),
+      T('Writesonic','WS','write','博客、SEO 与营销内容生成和优化平台。','https://writesonic.com/',['SEO','营销','免费']),
+      T('QuillBot','QB','write','英文改写、摘要、语法与引用辅助工具。','https://quillbot.com/',['改写','学术','免费']),
+      T('秘塔写作猫','XM','write','中文写作纠错、改写、续写与文本质量分析。','https://xiezuocat.com/',['国产','中文','免费']),
+
+      T('Midjourney','MJ','image','高质量艺术与商业视觉生成，风格控制能力强。','https://www.midjourney.com/',['绘图','高质量'],'创作者常用'),
+      T('ChatGPT Images','CI','image','通过自然语言生成与编辑图像，适合图文一体工作。','https://chatgpt.com/',['绘图','编辑','免费']),
+      T('Adobe Firefly','AF','image','Adobe 的商用友好生成式图像与设计工具。','https://firefly.adobe.com/',['Adobe','商用','免费']),
+      T('Ideogram','ID','image','擅长海报、文字排版与风格化图像生成。','https://ideogram.ai/',['海报','文字','免费']),
+      T('Recraft','RC','image','面向设计师的矢量、图标、品牌与图像生成工具。','https://www.recraft.ai/',['矢量','设计','免费']),
+      T('Leonardo AI','LE','image','游戏资产、产品图与多风格图像创作平台。','https://leonardo.ai/',['资产','绘图','免费']),
+      T('FLUX','FX','image','Black Forest Labs 的高质量图像模型与创作入口。','https://playground.bfl.ai/',['模型','绘图']),
+      T('即梦 AI','JM','image','字节旗下 AI 创作平台，覆盖绘图、视频与数字人。','https://jimeng.jianying.com/',['国产','绘图','视频']),
+
+      T('Sora','SO','video','OpenAI 的视频生成与故事板创作工具。','https://sora.com/',['视频','OpenAI']),
+      T('Runway','RW','video','专业 AI 视频生成、编辑与视觉特效平台。','https://runwayml.com/',['视频','编辑'],'专业首选'),
+      T('可灵 AI','KL','video','快手旗下高质量文生视频与图生视频平台。','https://klingai.kuaishou.com/',['国产','视频','免费'],'热门'),
+      T('Pika','PK','video','快速生成短视频、特效和创意片段。','https://pika.art/',['短视频','特效','免费']),
+      T('Luma Dream Machine','LU','video','提供自然运动与镜头表现的视频生成工具。','https://lumalabs.ai/dream-machine',['视频','镜头','免费']),
+      T('海螺 AI','HL','video','MiniMax 旗下视频生成与创意内容平台。','https://hailuoai.video/',['国产','视频','免费']),
+      T('HeyGen','HG','video','AI 数字人、口播视频与多语言翻译平台。','https://www.heygen.com/',['数字人','翻译','免费']),
+      T('Synthesia','SY','video','企业培训与讲解型 AI 数字人视频平台。','https://www.synthesia.io/',['数字人','企业']),
+      T('剪映','JY','video','覆盖脚本、字幕、数字人和智能剪辑的视频创作工具。','https://www.capcut.cn/',['国产','剪辑','免费']),
+
+      T('Cursor','CU','code','AI 原生代码编辑器，擅长跨文件理解、修改与调试。','https://www.cursor.com/',['IDE','智能体'],'开发者常用'),
+      T('Claude Code','CC','code','在终端中理解代码库、执行任务和协作开发。','https://claude.com/product/claude-code',['终端','智能体']),
+      T('GitHub Copilot','GC','code','覆盖 IDE、终端与 GitHub 工作流的编程助手。','https://github.com/features/copilot',['GitHub','IDE']),
+      T('Windsurf','WF','code','以智能体工作流为核心的 AI 代码编辑器。','https://windsurf.com/',['IDE','智能体','免费']),
+      T('Replit','RP','code','浏览器内用 AI 构建、运行和部署应用。','https://replit.com/',['全栈','部署','免费']),
+      T('v0','V0','code','Vercel 的生成式 UI 与前端原型构建工具。','https://v0.dev/',['前端','UI','免费']),
+      T('Bolt','BT','code','在浏览器中通过对话构建并运行全栈 Web 应用。','https://bolt.new/',['全栈','原型','免费']),
+      T('Lovable','LO','code','从自然语言生成可编辑、可部署的产品应用。','https://lovable.dev/',['产品','全栈','免费']),
+      T('Trae','TR','code','字节旗下 AI IDE，提供中文友好的智能体开发体验。','https://www.trae.ai/',['国产','IDE','免费']),
+      T('腾讯云 CodeBuddy','CB','code','面向开发者的 AI 编程伙伴与 IDE 工具。','https://copilot.tencent.com/',['国产','IDE','免费']),
+
+      T('Gamma','GA','office','用 AI 快速生成演示文稿、文档与网页。','https://gamma.app/',['PPT','网页','免费'],'效率推荐'),
+      T('Canva','CA','office','一站式设计平台，内置文案、图片和演示 AI 能力。','https://www.canva.com/ai-image-generator/',['设计','演示','免费']),
+      T('Napkin AI','NA','office','把文字快速转成流程图、图解与信息视觉。','https://www.napkin.ai/',['图解','演示','免费']),
+      T('Beautiful.ai','BA','office','自动排版与品牌一致的智能演示文稿工具。','https://www.beautiful.ai/',['PPT','排版']),
+      T('WPS AI','WA','office','融入文档、表格、演示和 PDF 的国产办公助手。','https://ai.wps.cn/',['国产','办公']),
+      T('讯飞智文','XZ','office','科大讯飞的 AI 文档与 PPT 生成工具。','https://zhiwen.xfyun.cn/',['国产','PPT','免费']),
+
+      T('NotebookLM','NL','research','基于自有资料生成摘要、问答、音频概览与学习材料。','https://notebooklm.google.com/',['资料库','引用','免费'],'学习首选'),
+      T('Elicit','EL','research','查找论文、提取证据并辅助系统性文献研究。','https://elicit.com/',['论文','证据','免费']),
+      T('Consensus','CS','research','从学术论文中搜索并综合研究结论。','https://consensus.app/',['论文','搜索','免费']),
+      T('SciSpace','SC','research','论文检索、阅读解释、文献综述与引用辅助。','https://scispace.com/',['论文','阅读','免费']),
+      T('Semantic Scholar','SS','research','Allen Institute 提供的免费学术搜索与推荐引擎。','https://www.semanticscholar.org/',['学术','搜索','免费']),
+      T('ResearchRabbit','RR','research','通过可视化关系发现论文、作者与研究脉络。','https://www.researchrabbit.ai/',['论文','图谱','免费']),
+      T('Scite','ST','research','分析论文被支持、提及或反驳的引用语境。','https://scite.ai/',['引用','核查']),
+
+      T('Suno','SU','audio','从文字生成歌曲、歌词与多种风格音乐。','https://suno.com/',['音乐','歌曲','免费'],'热门'),
+      T('Udio','UD','audio','高质量 AI 音乐生成与片段延展工具。','https://www.udio.com/',['音乐','生成','免费']),
+      T('ElevenLabs','XI','audio','自然语音合成、克隆、配音与多语言音频平台。','https://elevenlabs.io/',['配音','语音','免费']),
+      T('Fish Audio','FA','audio','中文友好的语音克隆与文本转语音平台。','https://fish.audio/',['国产','配音','免费']),
+      T('Adobe Podcast','AP','audio','一键增强人声、降噪并改善录音质量。','https://podcast.adobe.com/',['降噪','播客','免费']),
+      T('Descript','DE','audio','像编辑文档一样编辑播客、录音与视频。','https://www.descript.com/',['剪辑','转写','免费']),
+
+      T('Manus','MA','agent','面向复杂任务交付的通用 AI 智能体。','https://manus.im/',['智能体','任务']),
+      T('Dify','DF','agent','开源 LLM 应用、RAG 与智能体工作流平台。','https://dify.ai/',['开源','工作流','免费']),
+      T('Coze','CZ','agent','字节旗下智能体与自动化工作流开发平台。','https://www.coze.cn/',['国产','智能体','免费']),
+      T('n8n','N8','agent','可自托管的工作流自动化与 AI 编排平台。','https://n8n.io/',['自动化','开源','免费']),
+      T('Zapier AI','ZA','agent','连接大量 SaaS 服务的自动化与 AI 工作流平台。','https://zapier.com/ai',['自动化','集成']),
+      T('Make','MK','agent','可视化连接应用、数据与 AI 的自动化平台。','https://www.make.com/',['自动化','可视化','免费']),
+      T('Flowise','FL','agent','开源可视化 LLM 工作流与智能体构建器。','https://flowiseai.com/',['开源','可视化','免费']),
+      T('FastGPT','FG','agent','开源知识库问答、RAG 与 AI 应用编排平台。','https://fastgpt.io/',['国产','RAG','开源']),
+
+      T('APINEBULA','AN','api','统一 API 入口接入主流模型，人民币计费，面向全球开发者。','https://apinebula.ai/t1QTfq',['聚合','人民币','API'],'本站主推'),
+      T('OpenAI Platform','OA','api','OpenAI 模型 API、控制台与开发者平台。','https://platform.openai.com/',['模型','API']),
+      T('Anthropic Console','AC','api','Claude 模型 API、提示词工作台与开发控制台。','https://console.anthropic.com/',['Claude','API']),
+      T('Google AI Studio','AI','api','体验和调用 Gemini 模型的开发者工作台。','https://aistudio.google.com/',['Gemini','API','免费']),
+      T('GroqCloud','GQ','api','以高推理速度为特点的模型 API 平台。','https://console.groq.com/',['高速','API','免费']),
+      T('OpenRouter','OR','api','通过统一接口调用多家模型的聚合 API。','https://openrouter.ai/',['聚合','API']),
+      T('Replicate','RE','api','通过 API 运行和部署开源 AI 模型。','https://replicate.com/',['开源模型','API']),
+      T('Hugging Face','HF','api','模型、数据集、Spaces 与推理服务社区平台。','https://huggingface.co/',['开源','社区','免费'])
+    ];
+
+    const palette=['#f1efe9|#272722','#fff0eb|#b94725','#eaf0ff|#2852ba','#edf8f1|#237146','#f5edff|#6d3ea5','#fff6df|#94671a'];
+    const state={category:'all',query:'',favorites:new Set(JSON.parse(localStorage.getItem('starmap-favorites')||'[]'))};
+    const categoryEl=document.querySelector('#categories'),toolsEl=document.querySelector('#tools'),countEl=document.querySelector('#resultCount'),searchEl=document.querySelector('#search');
+    const esc=s=>s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+    const catCount=id=>id==='all'?tools.length:id==='fav'?state.favorites.size:tools.filter(t=>t.category===id).length;
+
+    function renderCategories(){categoryEl.innerHTML=categories.map(c=>`<button class="chip ${state.category===c.id?'active':''}" role="tab" aria-selected="${state.category===c.id}" data-cat="${c.id}"><span>${c.icon}</span>${c.name}<b>${catCount(c.id)}</b></button>`).join('')}
+    function filtered(){const q=state.query.trim().toLowerCase();return tools.filter(t=>(state.category==='all'||state.category===t.category||(state.category==='fav'&&state.favorites.has(t.name)))&&(!q||[t.name,t.desc,...t.tags].join(' ').toLowerCase().includes(q)))}
+    function renderTools(){const list=filtered();countEl.textContent=`共 ${list.length} 个工具`;toolsEl.innerHTML=list.length?list.map((t,i)=>{const p=palette[(t.name.charCodeAt(0)+i)%palette.length].split('|');const free=t.tags.includes('免费');return `<article class="tool-card" style="animation-delay:${Math.min(i,12)*18}ms"><div class="tool-top"><span class="tool-logo" style="--logo-bg:${p[0]};--logo-ink:${p[1]}">${esc(t.short)}</span><div class="tool-name">${esc(t.name)}${t.badge?`<small>${esc(t.badge)}</small>`:''}</div><button class="fav ${state.favorites.has(t.name)?'active':''}" data-fav="${esc(t.name)}" aria-label="${state.favorites.has(t.name)?'取消收藏':'收藏'} ${esc(t.name)}">${state.favorites.has(t.name)?'★':'☆'}</button></div><p class="tool-desc">${esc(t.desc)}</p><div class="tool-foot">${t.tags.slice(0,2).map(tag=>`<span class="tag ${tag==='免费'?'free':''}">${esc(tag)}</span>`).join('')}<a class="visit" href="${t.url}" target="_blank" rel="noopener" aria-label="访问 ${esc(t.name)} 官网">官网 <span>↗</span></a></div></article>`}).join(''):`<div class="empty"><strong>暂时没有匹配结果</strong>换个关键词，或清空筛选再试试。</div>`}
+    function render(){renderCategories();renderTools()}
+    categoryEl.addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;state.category=b.dataset.cat;render();document.querySelector('#directory').scrollIntoView({behavior:'smooth',block:'start'})});
+    toolsEl.addEventListener('click',e=>{const b=e.target.closest('[data-fav]');if(!b)return;const name=b.dataset.fav;state.favorites.has(name)?state.favorites.delete(name):state.favorites.add(name);localStorage.setItem('starmap-favorites',JSON.stringify([...state.favorites]));render()});
+    searchEl.addEventListener('input',e=>{state.query=e.target.value;renderTools()});
+    document.querySelectorAll('[data-query]').forEach(b=>b.addEventListener('click',()=>{searchEl.value=b.dataset.query;state.query=b.dataset.query;state.category='all';render();searchEl.focus()}));
+    document.addEventListener('keydown',e=>{if(e.key==='/'&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();searchEl.focus()}if(e.key==='Escape'&&document.activeElement===searchEl){searchEl.value='';state.query='';searchEl.blur();renderTools()}});
+    const modelContext=document.modelContext||navigator.modelContext;
+    if(modelContext?.registerTool){
+      const register=(definition,execute)=>{try{modelContext.registerTool({...definition,execute})}catch(error){console.debug('WebMCP tool registration skipped',error)}};
+      register({name:'search_ai_tools',description:'按名称、用途或标签搜索星图 AI 导航中的工具。',inputSchema:{type:'object',properties:{query:{type:'string',description:'搜索词，例如 AI 写作、视频或代码'},category:{type:'string',description:'可选分类 ID'}},required:['query']},annotations:{readOnlyHint:true}},({query='',category=''})=>({content:[{type:'text',text:JSON.stringify(tools.filter(t=>(!category||t.category===category)&&[t.name,t.desc,...t.tags].join(' ').toLowerCase().includes(String(query).toLowerCase())).slice(0,20),null,2)}]}));
+      register({name:'list_ai_categories',description:'列出星图 AI 导航的全部分类及工具数量。',inputSchema:{type:'object',properties:{}},annotations:{readOnlyHint:true}},()=>({content:[{type:'text',text:JSON.stringify(categories.filter(c=>!['all','fav'].includes(c.id)).map(c=>({id:c.id,name:c.name,count:catCount(c.id)})),null,2)}]}));
+      register({name:'get_apinebula_entrypoints',description:'获取 APINEBULA AI API 聚合平台的专属推广入口。',inputSchema:{type:'object',properties:{}},annotations:{readOnlyHint:true}},()=>({content:[{type:'text',text:JSON.stringify({promotion:'https://apinebula.ai/t1QTfq'},null,2)}]}));
     }
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        applyFilter(button.dataset.filter, searchInput.value);
-      });
-    });
-
-    function runSearch() {
-      const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
-      applyFilter(activeFilter, searchInput.value);
-      document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    searchBtn.addEventListener('click', runSearch);
-    searchInput.addEventListener('keydown', event => {
-      if (event.key === 'Enter') runSearch();
-    });
-
-    const downloadModal = document.getElementById('downloadModal');
-    const openDownloadModal = document.getElementById('openDownloadModal');
-    const modalCloseElements = document.querySelectorAll('[data-close-modal]');
-
-    function setDownloadModal(open) {
-      downloadModal.classList.toggle('open', open);
-      downloadModal.setAttribute('aria-hidden', String(!open));
-      document.body.classList.toggle('modal-lock', open);
-      if (open) {
-        downloadModal.querySelector('.modal-close').focus();
-      } else {
-        openDownloadModal.focus();
-      }
-    }
-
-    openDownloadModal.addEventListener('click', () => setDownloadModal(true));
-    modalCloseElements.forEach(element => {
-      element.addEventListener('click', () => setDownloadModal(false));
-    });
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && downloadModal.classList.contains('open')) {
-        setDownloadModal(false);
-      }
-    });
-
-    // 可折叠文字链接：桌面、平板和手机默认均显示 4 行
-    const linkDirectories = document.querySelectorAll('[data-link-directory]');
-
-    function getDirectoryColumns(grid) {
-      const columns = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;
-      return Math.max(columns, 1);
-    }
-
-    function updateLinkDirectory(directory, preserveExpanded = true) {
-      const grid = directory.querySelector('[data-link-grid]');
-      const links = Array.from(grid.querySelectorAll('.compact-text-link'));
-      const button = directory.querySelector('[data-link-toggle]');
-      const label = directory.querySelector('[data-toggle-label]');
-      const status = directory.querySelector('[data-link-status]');
-      const expanded = preserveExpanded && button.getAttribute('aria-expanded') === 'true';
-      const visibleCount = getDirectoryColumns(grid) * 4;
-
-      links.forEach((link, index) => {
-        link.classList.toggle('link-item-hidden', !expanded && index >= visibleCount);
-      });
-
-      const hasMore = links.length > visibleCount;
-      button.hidden = !hasMore;
-      button.setAttribute('aria-expanded', String(expanded && hasMore));
-      label.textContent = expanded && hasMore ? '收起内容' : '展开全部';
-
-      const shown = expanded || !hasMore ? links.length : Math.min(visibleCount, links.length);
-      status.textContent = hasMore ? `当前显示 ${shown} 条，共 ${links.length} 条` : `共 ${links.length} 条`;
-    }
-
-    linkDirectories.forEach(directory => {
-      const button = directory.querySelector('[data-link-toggle]');
-      button.addEventListener('click', () => {
-        const expanded = button.getAttribute('aria-expanded') === 'true';
-        button.setAttribute('aria-expanded', String(!expanded));
-        updateLinkDirectory(directory);
-
-        if (expanded) {
-          directory.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-      updateLinkDirectory(directory, false);
-    });
-
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        linkDirectories.forEach(directory => updateLinkDirectory(directory));
-      }, 120);
-    });
-
-    // 滚动一定距离后显示回到顶部按钮
-    const backToTop = document.getElementById('backToTop');
-
-    function updateBackToTop() {
-      backToTop.classList.toggle('visible', window.scrollY > 520);
-    }
-
-    window.addEventListener('scroll', updateBackToTop, { passive: true });
-    updateBackToTop();
-
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
+    const themeToggle=document.querySelector('#themeToggle');
+    const applyTheme=theme=>{document.documentElement.dataset.theme=theme;localStorage.setItem('starmap-theme',theme);themeToggle?.setAttribute('aria-pressed',String(theme==='dark'))};
+    themeToggle?.addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+    themeToggle?.setAttribute('aria-pressed',String(document.documentElement.dataset.theme==='dark'));
+    const backTop=document.querySelector('#backTop');
+    const syncBackTop=()=>backTop?.classList.toggle('show',scrollY>520);
+    addEventListener('scroll',syncBackTop,{passive:true});syncBackTop();
+    backTop?.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+    render();
+  })();
   </script>
 </body>
 </html>
